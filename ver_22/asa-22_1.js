@@ -104,25 +104,25 @@
     }
 })(jQuery);
 
-webform.afterLoad.asa = function () {
-    if (!Drupal.settings.mywebform.preview) {
-        var villages = jQuery("select[field='CAP5_R_C36']").myWebformSelect2GetOptions();
-        villages.forEach(function (village, index) {
-            if (village.id == '0000000') {
-                villages.splice(index, 1);
-                return;
-            }
-        });
+// webform.afterLoad.asa = function () {
+//     if (!Drupal.settings.mywebform.preview) {
+//         var villages = jQuery("select[field='CAP5_R_C36']").myWebformSelect2GetOptions();
+//         villages.forEach(function (village, index) {
+//             if (village.id == '0000000') {
+//                 villages.splice(index, 1);
+//                 return;
+//             }
+//         });
 
 
-        var arrayCaem = ['CAP4_R_C32', 'CAP5_R_C37'];
+//         var arrayCaem = ['CAP4_R_C32', 'CAP5_R_C37'];
 
-        jQuery.each(arrayCaem, function (key, value) {
-            set_caem_to_select(value, null, null);
-            set_options_html(value);
-        });
-    }
-};
+//         jQuery.each(arrayCaem, function (key, value) {
+//             set_caem_to_select(value, null, null);
+//             set_options_html(value);
+//         });
+//     }
+// };
 
 function set_options_html(selector) {
     var caemValues = Drupal.settings.mywebform.values[selector];
