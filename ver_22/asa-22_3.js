@@ -17,36 +17,36 @@
 
 
 
-            // check_is_checked();
-            // jQuery('input[type=checkbox]').change(function () {
-            //     var state = jQuery(this).is(':checked');
-            //     var group = jQuery(this).attr('name');
-            //     var pos = group.indexOf('CHESTIONAR_RA_');
-            //     var res = group.substr(0, pos !== false ? pos : 0);
+            check_is_checked();
+            jQuery('input[type=checkbox]').change(function () {
+                var state = jQuery(this).is(':checked');
+                var group = jQuery(this).attr('name');
+                var pos = group.indexOf('CHESTIONAR_RA_');
+                var res = group.substr(0, pos !== false ? pos : 0);
 
-            //     if (jQuery(this).attr('name') == "CHESTIONAR_RA_C1") {
-            //         jQuery('#CHESTIONAR_RA_C2').attr("checked", false);
-            //     }
-            //     else if (jQuery(this).attr('name') == "CHESTIONAR_RA_C2") {
-            //         jQuery('#CHESTIONAR_RA_C1').attr("checked", false);
-            //     }
+                if (jQuery(this).attr('name') == "CHESTIONAR_RA_C1") {
+                    jQuery('#CHESTIONAR_RA_C2').attr("checked", false);
+                }
+                else if (jQuery(this).attr('name') == "CHESTIONAR_RA_C2") {
+                    jQuery('#CHESTIONAR_RA_C1').attr("checked", false);
+                }
 
-            //     if (jQuery(this).attr('name') == "CHESTIONAR_R1_C1") {
-            //         jQuery('#CHESTIONAR_R2_C1').attr("checked", false);
-            //         jQuery('#CHESTIONAR_R3_C1').attr("checked", false);
-            //     }
-            //     else if (jQuery(this).attr('name') == "CHESTIONAR_R2_C1") {
-            //         jQuery('#CHESTIONAR_R1_C1').attr("checked", false);
-            //         jQuery('#CHESTIONAR_R3_C1').attr("checked", false);
-            //     }
-            //     else if (jQuery(this).attr('name') == "CHESTIONAR_R3_C1") {
-            //         jQuery('#CHESTIONAR_R1_C1').attr("checked", false);
-            //         jQuery('#CHESTIONAR_R2_C1').attr("checked", false);
-            //     }
+                if (jQuery(this).attr('name') == "CHESTIONAR_R1_C1") {
+                    jQuery('#CHESTIONAR_R2_C1').attr("checked", false);
+                    jQuery('#CHESTIONAR_R3_C1').attr("checked", false);
+                }
+                else if (jQuery(this).attr('name') == "CHESTIONAR_R2_C1") {
+                    jQuery('#CHESTIONAR_R1_C1').attr("checked", false);
+                    jQuery('#CHESTIONAR_R3_C1').attr("checked", false);
+                }
+                else if (jQuery(this).attr('name') == "CHESTIONAR_R3_C1") {
+                    jQuery('#CHESTIONAR_R1_C1').attr("checked", false);
+                    jQuery('#CHESTIONAR_R2_C1').attr("checked", false);
+                }
 
-            //     check_is_checked();
+                check_is_checked();
 
-            // });
+            });
         }
     };
 
@@ -55,63 +55,63 @@
 
 
 
-    // function check_is_checked() {
-    //     var select_yes = jQuery('#CHESTIONAR_RA_C1');
-    //     var select_no = jQuery('#CHESTIONAR_RA_C2');
-    //     if (select_yes.is(':checked')) {
-    //         jQuery('#CHESTIONAR_RI_C1').attr("disabled", false);
-    //         jQuery('#CHESTIONAR_RII_C1').attr("disabled", false);
-    //         jQuery('#CHESTIONAR_RIII_C1').attr("disabled", false);
-    //         jQuery('#CHESTIONAR_RIV_C1').attr("disabled", false);
-    //         jQuery('#CHESTIONAR_RV_C1').attr("disabled", false);
-    //         jQuery('#CHESTIONAR_RVI_C1').attr("disabled", false);
-    //         jQuery('#CHESTIONAR_RVII_C1').attr("disabled", false);
-    //         jQuery('#CHESTIONAR_RVIII_C1').attr("disabled", false);
-    //         jQuery('#CHESTIONAR_RIX_C1').attr("disabled", false);
-    //         jQuery('#CHESTIONAR_RX_C1').attr("disabled", false);
-    //         jQuery('#CHESTIONAR_RXI_C1').attr("disabled", false);
-    //         jQuery('#CHESTIONAR_RXII_C1').attr("disabled", false);
+    function check_is_checked() {
+        var select_yes = jQuery('#CHESTIONAR_RA_C1');
+        var select_no = jQuery('#CHESTIONAR_RA_C2');
+        if (select_yes.is(':checked')) {
+            jQuery('#CHESTIONAR_RI_C1').attr("disabled", false);
+            jQuery('#CHESTIONAR_RII_C1').attr("disabled", false);
+            jQuery('#CHESTIONAR_RIII_C1').attr("disabled", false);
+            jQuery('#CHESTIONAR_RIV_C1').attr("disabled", false);
+            jQuery('#CHESTIONAR_RV_C1').attr("disabled", false);
+            jQuery('#CHESTIONAR_RVI_C1').attr("disabled", false);
+            jQuery('#CHESTIONAR_RVII_C1').attr("disabled", false);
+            jQuery('#CHESTIONAR_RVIII_C1').attr("disabled", false);
+            jQuery('#CHESTIONAR_RIX_C1').attr("disabled", false);
+            jQuery('#CHESTIONAR_RX_C1').attr("disabled", false);
+            jQuery('#CHESTIONAR_RXI_C1').attr("disabled", false);
+            jQuery('#CHESTIONAR_RXII_C1').attr("disabled", false);
 
-    //         jQuery('#CHESTIONAR_R1_C1').attr("disabled", true);
-    //         jQuery('#CHESTIONAR_R1_C1').attr("checked", false);
-    //         jQuery('#CHESTIONAR_R2_C1').attr("disabled", true);
-    //         jQuery('#CHESTIONAR_R2_C1').attr("checked", false);
-    //         jQuery('#CHESTIONAR_R3_C1').attr("disabled", true);
-    //         jQuery('#CHESTIONAR_R3_C1').attr("checked", false);
-    //         select_no.attr("checked", false);
-    //     } else {
+            jQuery('#CHESTIONAR_R1_C1').attr("disabled", true);
+            jQuery('#CHESTIONAR_R1_C1').attr("checked", false);
+            jQuery('#CHESTIONAR_R2_C1').attr("disabled", true);
+            jQuery('#CHESTIONAR_R2_C1').attr("checked", false);
+            jQuery('#CHESTIONAR_R3_C1').attr("disabled", true);
+            jQuery('#CHESTIONAR_R3_C1').attr("checked", false);
+            select_no.attr("checked", false);
+        } else {
 
-    //         jQuery('#CHESTIONAR_R1_C1').attr("disabled", false);
-    //         jQuery('#CHESTIONAR_R2_C1').attr("disabled", false);
-    //         jQuery('#CHESTIONAR_R3_C1').attr("disabled", false);
+            jQuery('#CHESTIONAR_R1_C1').attr("disabled", false);
+            jQuery('#CHESTIONAR_R2_C1').attr("disabled", false);
+            jQuery('#CHESTIONAR_R3_C1').attr("disabled", false);
 
-    //         jQuery('#CHESTIONAR_RI_C1').attr("disabled", true);
-    //         jQuery('#CHESTIONAR_RI_C1').attr("checked", false);
-    //         jQuery('#CHESTIONAR_RII_C1').attr("disabled", true);
-    //         jQuery('#CHESTIONAR_RII_C1').attr("checked", false);
-    //         jQuery('#CHESTIONAR_RIII_C1').attr("disabled", true);
-    //         jQuery('#CHESTIONAR_RIII_C1').attr("checked", false);
-    //         jQuery('#CHESTIONAR_RIV_C1').attr("disabled", true);
-    //         jQuery('#CHESTIONAR_RIV_C1').attr("checked", false);
-    //         jQuery('#CHESTIONAR_RV_C1').attr("disabled", true);
-    //         jQuery('#CHESTIONAR_RV_C1').attr("checked", false);
-    //         jQuery('#CHESTIONAR_RVI_C1').attr("disabled", true);
-    //         jQuery('#CHESTIONAR_RVI_C1').attr("checked", false);
-    //         jQuery('#CHESTIONAR_RVII_C1').attr("disabled", true);
-    //         jQuery('#CHESTIONAR_RVII_C1').attr("checked", false);
-    //         jQuery('#CHESTIONAR_RVIII_C1').attr("disabled", true);
-    //         jQuery('#CHESTIONAR_RVIII_C1').attr("checked", false);
-    //         jQuery('#CHESTIONAR_RIX_C1').attr("disabled", true);
-    //         jQuery('#CHESTIONAR_RIX_C1').attr("checked", false);
-    //         jQuery('#CHESTIONAR_RX_C1').attr("disabled", true);
-    //         jQuery('#CHESTIONAR_RX_C1').attr("checked", false);
-    //         jQuery('#CHESTIONAR_RXI_C1').attr("disabled", true);
-    //         jQuery('#CHESTIONAR_RXI_C1').attr("checked", false);
-    //         jQuery('#CHESTIONAR_RXII_C1').attr("disabled", true);
-    //         jQuery('#CHESTIONAR_RXII_C1').attr("checked", false);
-    //         select_yes.attr("checked", false);
-    //     }
-    // }
+            jQuery('#CHESTIONAR_RI_C1').attr("disabled", true);
+            jQuery('#CHESTIONAR_RI_C1').attr("checked", false);
+            jQuery('#CHESTIONAR_RII_C1').attr("disabled", true);
+            jQuery('#CHESTIONAR_RII_C1').attr("checked", false);
+            jQuery('#CHESTIONAR_RIII_C1').attr("disabled", true);
+            jQuery('#CHESTIONAR_RIII_C1').attr("checked", false);
+            jQuery('#CHESTIONAR_RIV_C1').attr("disabled", true);
+            jQuery('#CHESTIONAR_RIV_C1').attr("checked", false);
+            jQuery('#CHESTIONAR_RV_C1').attr("disabled", true);
+            jQuery('#CHESTIONAR_RV_C1').attr("checked", false);
+            jQuery('#CHESTIONAR_RVI_C1').attr("disabled", true);
+            jQuery('#CHESTIONAR_RVI_C1').attr("checked", false);
+            jQuery('#CHESTIONAR_RVII_C1').attr("disabled", true);
+            jQuery('#CHESTIONAR_RVII_C1').attr("checked", false);
+            jQuery('#CHESTIONAR_RVIII_C1').attr("disabled", true);
+            jQuery('#CHESTIONAR_RVIII_C1').attr("checked", false);
+            jQuery('#CHESTIONAR_RIX_C1').attr("disabled", true);
+            jQuery('#CHESTIONAR_RIX_C1').attr("checked", false);
+            jQuery('#CHESTIONAR_RX_C1').attr("disabled", true);
+            jQuery('#CHESTIONAR_RX_C1').attr("checked", false);
+            jQuery('#CHESTIONAR_RXI_C1').attr("disabled", true);
+            jQuery('#CHESTIONAR_RXI_C1').attr("checked", false);
+            jQuery('#CHESTIONAR_RXII_C1').attr("disabled", true);
+            jQuery('#CHESTIONAR_RXII_C1').attr("checked", false);
+            select_yes.attr("checked", false);
+        }
+    }
 
 
 })(jQuery);
