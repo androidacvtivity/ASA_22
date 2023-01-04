@@ -197,7 +197,7 @@ webform.validators.asa = function (v, allowOverpass) {
     //         'msg': Drupal.t('Cod eroare: 0.02, Trebuie sa bifati una din optiunule variantei da')
     //     });
     // }
-
+//----------------Start -- 64-002
 
     if (!isNaN(Number(values["CAP1_R151_C1"]))) {
         var var1_64_002 = Number(values["CAP1_R151_C1"]);
@@ -206,10 +206,6 @@ webform.validators.asa = function (v, allowOverpass) {
     if (!isNaN(Number(values["CAP1_R150_C1"]))) {
         var var2_64_002 = Number(values["CAP1_R150_C1"]);
     }
-
-
-//    if (Decimal(values.CAP1_R151_C1 || 0).greaterThan(values.CAP1_R150_C1 || 0)) 
-    
     if (var1_64_002 > var2_64_002) 
     {
         webform.errors.push({
@@ -217,6 +213,31 @@ webform.validators.asa = function (v, allowOverpass) {
             'msg': Drupal.t('Cod eroare: 64-002, [r.151 c.1] <= [r.150 c.1]  [&var1_64_002] > [&var2_64_002]', { '&var1_64_002': var1_64_002, '&var2_64_002': var2_64_002 })
         });
     }
+    
+//----------------End -- 64-002
+
+
+
+    //----------------Start -- 64-110
+
+    if (!isNaN(Number(values["CAP1_R111_C1"]))) {
+        var var1_64_110 = Number(values["CAP1_R111_C1"]);
+    }
+
+    if (!isNaN(Number(values["CAP1_R110_C1"]))) {
+        var var2_64_110 = Number(values["CAP1_R110_C1"]);
+    }
+    if (var1_64_110 > var2_64_110) {
+        webform.errors.push({
+            'fieldName': 'CAP1_R151_C1',
+            'msg': Drupal.t('Cod eroare: 64-110, [r.111 c.1] <= [r.110 c.1]  [&var1_64_110] > [&var2_64_110]', { '&var1_64_110': var1_64_110, '&var2_64_110': var2_64_110 })
+        });
+    }
+
+//----------------End -- 64-110
+
+
+
 
     // if (cfpNr == '12' && !(cfojNr == '500' || cfojNr == '510' || cfojNr == '520' || cfojNr == '530' || cfojNr == '590' || cfojNr == '690' || cfojNr == '880' || cfojNr == '960')) {
     //     webform.errors.push({
@@ -401,12 +422,17 @@ webform.validators.asa = function (v, allowOverpass) {
     //     });
     // }
 
+    
+    
     // if (Decimal(values.CAP1_R111_C1 || 0).greaterThan(values.CAP1_R110_C1 || 0)) {
     //     webform.errors.push({
     //         'fieldName': 'CAP1_R111_C1',
     //         'msg': Drupal.t('Cod eroare: 3.08, [r.111 c.1] <= [r.110 c.1]')
     //     });
     // }
+
+
+
 
     // if (!Decimal(values.CAP4_R400_C3 || 0).equals(values.CAP1_R150_C1 || 0)) {
     //     webform.errors.push({
