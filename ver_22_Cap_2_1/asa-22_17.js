@@ -4,9 +4,9 @@
         attach: function (context, settings) {
 
 
-            // if (!Drupal.settings.mywebform.preview) {
-            //     activity_options_default_value = (typeof Drupal.settings.mywebform.values.CAEM != "undefined" ? Drupal.settings.mywebform.values.CAEM : '');
-            // }
+            if (!Drupal.settings.mywebform.preview) {
+                activity_options_default_value = (typeof Drupal.settings.mywebform.values.CAEM != "undefined" ? Drupal.settings.mywebform.values.CAEM : '');
+            }
 
             jQuery('#mywebform-edit-form').on('keypress', 'input.money, input.float, input.numeric', function (event) {
                 if (isNumberPressed(this, event) === false) {
@@ -116,50 +116,50 @@
 
 })(jQuery);
 
-// webform.afterLoad.asa = function () {
-//     if (!Drupal.settings.mywebform.preview) {
-//         var villages = jQuery("select[field='CAP5_R_C36']").myWebformSelect2GetOptions();
-//         villages.forEach(function (village, index) {
-//             if (village.id == '0000000') {
-//                 villages.splice(index, 1);
-//                 return;
-//             }
-//         });
+webform.afterLoad.asa = function () {
+    if (!Drupal.settings.mywebform.preview) {
+        var villages = jQuery("select[field='CAP5_R_C36']").myWebformSelect2GetOptions();
+        villages.forEach(function (village, index) {
+            if (village.id == '0000000') {
+                villages.splice(index, 1);
+                return;
+            }
+        });
 
 
-//         var arrayCaem = ['CAP4_R_C32', 'CAP5_R_C37'];
+        var arrayCaem = ['CAP4_R_C32', 'CAP5_R_C37'];
 
-//         jQuery.each(arrayCaem, function (key, value) {
-//             set_caem_to_select(value, null, null);
-//             set_options_html(value);
-//         });
-//     }
-// };
+        jQuery.each(arrayCaem, function (key, value) {
+            set_caem_to_select(value, null, null);
+            set_options_html(value);
+        });
+    }
+};
 
-// function set_options_html(selector) {
-//     var caemValues = Drupal.settings.mywebform.values[selector];
-//     if (!jQuery.isEmptyObject(caemValues)) {
-//         jQuery.each(caemValues, function (key, value) {
-//             set_caem_to_select(selector, value, key + 1);
-//         });
-//     }
-// }
+function set_options_html(selector) {
+    var caemValues = Drupal.settings.mywebform.values[selector];
+    if (!jQuery.isEmptyObject(caemValues)) {
+        jQuery.each(caemValues, function (key, value) {
+            set_caem_to_select(selector, value, key + 1);
+        });
+    }
+}
 
-// function set_caem_to_select(selector, valueCaem, keyCaem) {
-//     var obj = (keyCaem !== null ? jQuery('#' + selector + '-' + keyCaem) : jQuery('#' + selector));
-//     obj.empty();
-//     obj.append(jQuery("<option></option>").attr("value", '').text(''));
-//     jQuery.each(caem_select, function (key, value) {
-//         if (value.description == valueCaem)
-//             obj.append(
-//                 jQuery("<option></option>").attr("value", value.description).attr("selected", "selected").text(value.description + " , " + value.name));
-//         else
-//             obj.append(
-//                 jQuery("<option></option>").attr("value", value.description).text(value.description + " , " + value.name));
-//     });
+function set_caem_to_select(selector, valueCaem, keyCaem) {
+    var obj = (keyCaem !== null ? jQuery('#' + selector + '-' + keyCaem) : jQuery('#' + selector));
+    obj.empty();
+    obj.append(jQuery("<option></option>").attr("value", '').text(''));
+    jQuery.each(caem_select, function (key, value) {
+        if (value.description == valueCaem)
+            obj.append(
+                jQuery("<option></option>").attr("value", value.description).attr("selected", "selected").text(value.description + " , " + value.name));
+        else
+            obj.append(
+                jQuery("<option></option>").attr("value", value.description).text(value.description + " , " + value.name));
+    });
 
-//     obj.change();
-// }
+    obj.change();
+}
 
 webform.validators.asa = function (v, allowOverpass) {
     var values = Drupal.settings.mywebform.values;
