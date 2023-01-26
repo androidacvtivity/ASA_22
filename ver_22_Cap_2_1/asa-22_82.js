@@ -696,6 +696,39 @@ webform.validators.asa = function (v, allowOverpass) {
         }
     }
      //End 64-102
+
+  // Start 64 - 103
+    // if (!isNaN(Number(values["CAP21_R" + i + "-3_C1"]))) {
+    //     var col3 = Number(values["CAP21_R" + i + "-3_C1"]);
+    // }
+
+    if (!isNaN(Number(values["CAP2_R220_C1"]))) {
+        var col2 = Number(values["CAP2_R220_C1"]);
+    }
+
+    if (!isNaN(Number(values["CAP2_R240_C1"]))) {
+        var col4 = Number(values["CAP2_R240_C1"]);
+    }
+
+
+
+    if (!isNaN(Number(values["CAP21_R2100-1_C1"]))) {
+        var col1 = Number(values["CAP21_R2100-1_C1"]);
+    }
+
+    var SUM_COL2_COL4 = col2 +  col4
+    var SUM_COL2_COL4_F = parseFloat(SUM_COL2_COL4.toFixed(1));
+ 
+    if (col1 !== SUM_COL2_COL4_F) {
+        webform.errors.push({
+            'fieldName': 'CAP21_R2100-1_C1',
+            'weight': 4,
+            'msg': Drupal.t('Cod eroare: 64-103  CAP 2.1 2100 col.1 = CAP 2  220 + 240 - @col1 <>   @SUM_COL2_COL4_F ', { "@col1": col1, "@SUM_COL2_COL4_F": SUM_COL2_COL4_F })
+        });
+    }
+
+  // End   64 - 103 
+
    
      webform.validatorsStatus.asa = 1;
     validateWebform();
