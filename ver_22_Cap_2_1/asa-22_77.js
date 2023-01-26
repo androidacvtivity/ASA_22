@@ -567,9 +567,9 @@ webform.validators.asa = function (v, allowOverpass) {
     }
 
     
+  //--------------------------------------------------------------------------------------------------------------------  
     
-    
-    
+ // -- Start    64-102
 
     {
         function fun_row_36_001(row) {
@@ -578,7 +578,8 @@ webform.validators.asa = function (v, allowOverpass) {
             if (
 
 
-                2120 == i || 2130 == i || 2120 == i || 2117 == i 
+                2130 == i || 2120 == i || 2101 == i || 2103 == i || 2105 == i || 2106 == i || 2107 == i || 2108 == i
+                || 2109 == i
 
                
 
@@ -588,31 +589,31 @@ webform.validators.asa = function (v, allowOverpass) {
         }
 
         // Start 64-102
-        for (var i = 2110; i < 2131; i++) {
+        for (var i = 2100; i < 2131; i++) {
             {
                 if (fun_row_36_001((i))) {
-
-                    if (!isNaN(Number(values["CAP21_R" + i + "_C3"]))) {
-                        var col3 = Number(values["CAP21_R" + i + "_C3"]);
+                                             
+                    if (!isNaN(Number(values["CAP21_R" + i + "-3_C1"]))) {
+                        var col3 = Number(values["CAP21_R" + i + "-3_C1"]);
                     }
 
-                    if (!isNaN(Number(values["CAP21_R" + i + "_C2"]))) {
-                        var col2 = Number(values["CAP21_R" + i + "_C2"]);
+                    if (!isNaN(Number(values["CAP21_R" + i + "-2_C1"]))) {
+                        var col2 = Number(values["CAP21_R" + i + "-2_C1"]);
                     }
 
                     // if (!isNaN(Number(values["CAP21_R" + i + "_C4"]))) {
                     //     var col4 = Number(values["CAP21_R" + i + "_C4"]);
                     // }
 
-                    if (!isNaN(Number(values["CAP21_R" + i + "_C1"]))) {
-                        var col1 = Number(values["CAP21_R" + i + "_C1"]);
+                    if (!isNaN(Number(values["CAP21_R" + i + "-1_C1"]))) {
+                        var col1 = Number(values["CAP21_R" + i + "-1_C1"]);
                     }
 
                   var SUM_COL2_COL4 =  col2 + col3
 
                     if (col1 < (SUM_COL2_COL4)) {
                         webform.errors.push({
-                            'fieldName': 'CAP21_R' + i + '_C1',
+                            'fieldName': 'CAP21_R' + i + '-1_C1',
                             'weight': 1,
                             'msg': Drupal.t('Cod eroare: 64-102  CAP 2.1 col.1 ≥ col 2 + col. 3 + col.4  pe toate rindurile - @col1 <  @SUM_COL2_COL4 ', { "@col1": col1, "@SUM_COL2_COL4": SUM_COL2_COL4 })
                         });
@@ -629,7 +630,7 @@ webform.validators.asa = function (v, allowOverpass) {
             }
         }
     }
-    // //End 64-102
+
 
 
     {
@@ -639,10 +640,10 @@ webform.validators.asa = function (v, allowOverpass) {
             if (
 
 
-                2128 == i || 2127 == i || 2125 == i || 2124 == i
-                || 2123 == i || 2121 == i || 2119 == i || 2118 == i
-                || 2110 == i || 2111 == i || 2112 == i || 2113 == i
-                || 2114 == i || 2115 == i || 2116 == i
+                2102 == i || 2104 == i || 2110 == i || 2111 == i || 2112 == i || 2113 == i || 2114 == i || 2115 == i
+                || 2116 == i || 2117 == i || 2118 == i || 2119 == i || 2121 == i  || 2123 == i || 2124 == i || 2125 == i || 2127 == i
+                || 2128 == i
+
 
 
             )
@@ -651,31 +652,33 @@ webform.validators.asa = function (v, allowOverpass) {
         }
 
         // Start 64-102
-        for (var i = 2110; i < 2131; i++) {
+        for (var i = 2100; i < 2131; i++) {
             {
                 if (fun_row_36_002((i))) {
 
-                    if (!isNaN(Number(values["CAP21_R" + i + "_C3"]))) {
-                        var col3 = Number(values["CAP21_R" + i + "_C3"]);
+                    if (!isNaN(Number(values["CAP21_R" + i + "-3_C1"]))) {
+                        var col3 = Number(values["CAP21_R" + i + "-3_C1"]);
                     }
 
-                    if (!isNaN(Number(values["CAP21_R" + i + "_C2"]))) {
-                        var col2 = Number(values["CAP21_R" + i + "_C2"]);
+                    if (!isNaN(Number(values["CAP21_R" + i + "-2_C1"]))) {
+                        var col2 = Number(values["CAP21_R" + i + "-2_C1"]);
                     }
 
-                    if (!isNaN(Number(values["CAP21_R" + i + "_C4"]))) {
-                        var col4 = Number(values["CAP21_R" + i + "_C4"]);
+                    if (!isNaN(Number(values["CAP21_R" + i + "-4_C1"]))) {
+                        var col4 = Number(values["CAP21_R" + i + "-4_C1"]);
                     }
 
-                    if (!isNaN(Number(values["CAP21_R" + i + "_C1"]))) {
-                        var col1 = Number(values["CAP21_R" + i + "_C1"]);
+         
+
+                    if (!isNaN(Number(values["CAP21_R" + i + "-1_C1"]))) {
+                        var col1 = Number(values["CAP21_R" + i + "-1_C1"]);
                     }
 
                     var SUM_COL2_COL4 = col2 + col3 + col4
 
                     if (col1 < (SUM_COL2_COL4)) {
                         webform.errors.push({
-                            'fieldName': 'CAP21_R' + i + '_C1',
+                            'fieldName': 'CAP21_R' + i + '-1_C1',
                             'weight': 1,
                             'msg': Drupal.t('Cod eroare: 64-102  CAP 2.1 col.1 ≥ col 2 + col. 3 + col.4  pe toate rindurile - @col1 <  @SUM_COL2_COL4 ', { "@col1": col1, "@SUM_COL2_COL4": SUM_COL2_COL4 })
                         });
@@ -692,353 +695,8 @@ webform.validators.asa = function (v, allowOverpass) {
             }
         }
     }
-    //End 64-102
-
-
-
-//     // Start 64-102
-
-     {
-
-
-
-        if (!isNaN(Number(values["CAP21_R2101_C1"]))) {
-            var col1 = Number(values["CAP21_R2101_C1"]);
-        }
-
-        if (!isNaN(Number(values["CAP21_R2101_C2"]))) {
-            var col2 = Number(values["CAP21_R2101_C2"]);
-        }
-
-        if (!isNaN(Number(values["CAP21_R2101_C3"]))) {
-            var col3 = Number(values["CAP21_R2101_C3"]);
-        }
-
-        // if (!isNaN(Number(values["CAP21_R2101_C4"]))) {
-        //     var col4 = Number(values["CAP21_R2101_C4"]);
-        // }
-        var SUM_COL2_COL4 =  col2 + col3
-
-    if (col1 <  SUM_COL2_COL4) {
-            webform.errors.push({
-                'fieldName': 'CAP21_R2101_C1',
-                'weight': 1,
-                'msg': Drupal.t('Cod eroare: 64-102  CAP 2.1 col.1 ≥ col 2 + col. 3 + col.4  pe toate rindurile - @col1 <  @SUM_COL2_COL4 ', { "@col1": col1, "@SUM_COL2_COL4": SUM_COL2_COL4 })
-            });
-        }
-
-
-    }    
-
-
- //End 64-102
-
-
-
-    //     // Start 64-102
-
-         {
-
-
-
-    if (!isNaN(Number(values["CAP21_R2102_C1"]))) {
-        var col1 = Number(values["CAP21_R2102_C1"]);
-    }
-
-    if (!isNaN(Number(values["CAP21_R2102_C2"]))) {
-        var col2 = Number(values["CAP21_R2102_C2"]);
-    }
-
-    if (!isNaN(Number(values["CAP21_R2102_C3"]))) {
-        
-        var col3 = Number(values["CAP21_R2102_C3"]);
-    }
-
-    if (!isNaN(Number(values["CAP21_R2102_C4"]))) {
-        var col4 = Number(values["CAP21_R2102_C4"]);
-    }
-    var SUM_COL2_COL4 = col2 + col3 + col4 
-
-    if (col1 < SUM_COL2_COL4) {
-        webform.errors.push({
-            'fieldName': 'CAP21_R2102_C1',
-            'weight': 2,
-            'msg': Drupal.t('Cod eroare: 64-102  CAP 2.1 col.1 ≥ col 2 + col. 3 + col.4  pe toate rindurile - @col1 <  @SUM_COL2_COL4 ', { "@col1": col1, "@SUM_COL2_COL4": SUM_COL2_COL4 })
-        });
-    }
-    }
-
-
-
- //End 64-102
-
-
-
-    //     // Start 64-102
-
-    {
-
-
-
-        if (!isNaN(Number(values["CAP21_R2103_C1"]))) {
-            var col1 = Number(values["CAP21_R2103_C1"]);
-        }
-
-        if (!isNaN(Number(values["CAP21_R2103_C2"]))) {
-            var col2 = Number(values["CAP21_R2103_C2"]);
-        }
-
-        if (!isNaN(Number(values["CAP21_R2103_C3"]))) {
-            var col3 = Number(values["CAP21_R2103_C3"]);
-        }
-
-        // if (!isNaN(Number(values["CAP21_R2101_C4"]))) {
-        //     var col4 = Number(values["CAP21_R2101_C4"]);
-        // }
-        var SUM_COL2_COL4 = col2 + col3
-
-        if (col1 < SUM_COL2_COL4) {
-            webform.errors.push({
-                'fieldName': 'CAP21_R2103_C1',
-                'weight': 3,
-                'msg': Drupal.t('Cod eroare: 64-102  CAP 2.1 col.1 ≥ col 2 + col. 3 + col.4  pe toate rindurile - @col1 <  @SUM_COL2_COL4 ', { "@col1": col1, "@SUM_COL2_COL4": SUM_COL2_COL4 })
-            });
-        }
-
-
-    }
-
-
- //End 64-102
-
-
-
-
-    //     // Start 64-102
-
-    {
-
-
-
-        if (!isNaN(Number(values["CAP21_R2104_C1"]))) {
-            var col1 = Number(values["CAP21_R2104_C1"]);
-        }
-
-        if (!isNaN(Number(values["CAP21_R2104_C2"]))) {
-            var col2 = Number(values["CAP21_R2104_C2"]);
-        }
-
-        if (!isNaN(Number(values["CAP21_R2104_C3"]))) {
-            var col3 = Number(values["CAP21_R2104_C3"]);
-        }
-
-        if (!isNaN(Number(values["CAP21_R2104_C4"]))) {
-            var col4 = Number(values["CAP21_R2104_C4"]);
-        }
-        var SUM_COL2_COL4 = col2 + col3 + col4 
-
-        if (col1 < SUM_COL2_COL4) {
-            webform.errors.push({
-                'fieldName': 'CAP21_R2104_C1',
-                'weight': 4,
-                'msg': Drupal.t('Cod eroare: 64-102  CAP 2.1 col.1 ≥ col 2 + col. 3 + col.4  pe toate rindurile - @col1 <  @SUM_COL2_COL4 ', { "@col1": col1, "@SUM_COL2_COL4": SUM_COL2_COL4 })
-            });
-        }
-
-
-    }
-
-
- //End 64-102
-
-    //     // Start 64-102
-
-    {
-
-
-
-        if (!isNaN(Number(values["CAP21_R2105_C1"]))) {
-            var col1 = Number(values["CAP21_R2105_C1"]);
-        }
-
-        if (!isNaN(Number(values["CAP21_R2105_C2"]))) {
-            var col2 = Number(values["CAP21_R2105_C2"]);
-        }
-
-        if (!isNaN(Number(values["CAP21_R2105_C3"]))) {
-            var col3 = Number(values["CAP21_R2105_C3"]);
-        }
-
-        // if (!isNaN(Number(values["CAP21_R2104_C4"]))) {
-        //     var col4 = Number(values["CAP21_R2104_C4"]);
-        // }
-        var SUM_COL2_COL4 = col2 + col3 
-
-        if (col1 < SUM_COL2_COL4) {
-            webform.errors.push({
-                'fieldName': 'CAP21_R2105_C1',
-                'weight': 5,
-                'msg': Drupal.t('Cod eroare: 64-102  CAP 2.1 col.1 ≥ col 2 + col. 3 + col.4  pe toate rindurile - @col1 <  @SUM_COL2_COL4 ', { "@col1": col1, "@SUM_COL2_COL4": SUM_COL2_COL4 })
-            });
-        }
-
-
-    }
-
-
- //End 64-102
-
-
-
-    //     // Start 64-102
-
-    {
-
-
-
-        if (!isNaN(Number(values["CAP21_R2106_C1"]))) {
-            var col1 = Number(values["CAP21_R2106_C1"]);
-        }
-
-        if (!isNaN(Number(values["CAP21_R2106_C2"]))) {
-            var col2 = Number(values["CAP21_R2106_C2"]);
-        }
-
-        if (!isNaN(Number(values["CAP21_R2106_C3"]))) {
-            var col3 = Number(values["CAP21_R2106_C3"]);
-        }
-
-        // if (!isNaN(Number(values["CAP21_R2104_C4"]))) {
-        //     var col4 = Number(values["CAP21_R2104_C4"]);
-        // }
-        var SUM_COL2_COL4 = col2 + col3
-
-        if (col1 < SUM_COL2_COL4) {
-            webform.errors.push({
-                'fieldName': 'CAP21_R2106_C1',
-                'weight': 6,
-                'msg': Drupal.t('Cod eroare: 64-102  CAP 2.1 col.1 ≥ col 2 + col. 3 + col.4  pe toate rindurile - @col1 <  @SUM_COL2_COL4 ', { "@col1": col1, "@SUM_COL2_COL4": SUM_COL2_COL4 })
-            });
-        }
-
-
-    }
-
-
- //End 64-102
-
-
-    //     // Start 64-102
-
-    {
-
-
-
-        if (!isNaN(Number(values["CAP21_R2107_C1"]))) {
-            var col1 = Number(values["CAP21_R2107_C1"]);
-        }
-
-        if (!isNaN(Number(values["CAP21_R2107_C2"]))) {
-            var col2 = Number(values["CAP21_R2107_C2"]);
-        }
-
-        if (!isNaN(Number(values["CAP21_R2107_C3"]))) {
-            var col3 = Number(values["CAP21_R2107_C3"]);
-        }
-
-        // if (!isNaN(Number(values["CAP21_R2104_C4"]))) {
-        //     var col4 = Number(values["CAP21_R2104_C4"]);
-        // }
-        var SUM_COL2_COL4 = col2 + col3
-
-        if (col1 < SUM_COL2_COL4) {
-            webform.errors.push({
-                'fieldName': 'CAP21_R2107_C1',
-                'weight': 7,
-                'msg': Drupal.t('Cod eroare: 64-102  CAP 2.1 col.1 ≥ col 2 + col. 3 + col.4  pe toate rindurile - @col1 <  @SUM_COL2_COL4 ', { "@col1": col1, "@SUM_COL2_COL4": SUM_COL2_COL4 })
-            });
-        }
-
-
-    }
-
-
- //End 64-102
-
-
-
-    //     // Start 64-102
-
-    {
-
-
-
-        if (!isNaN(Number(values["CAP21_R2108_C1"]))) {
-            var col1 = Number(values["CAP21_R2108_C1"]);
-        }
-
-        if (!isNaN(Number(values["CAP21_R2108_C2"]))) {
-            var col2 = Number(values["CAP21_R2108_C2"]);
-        }
-
-        if (!isNaN(Number(values["CAP21_R2108_C3"]))) {
-            var col3 = Number(values["CAP21_R2108_C3"]);
-        }
-
-        // if (!isNaN(Number(values["CAP21_R2104_C4"]))) {
-        //     var col4 = Number(values["CAP21_R2104_C4"]);
-        // }
-        var SUM_COL2_COL4 = col2 + col3
-
-        if (col1 < SUM_COL2_COL4) {
-            webform.errors.push({
-                'fieldName': 'CAP21_R2108_C1',
-                'weight': 8,
-                'msg': Drupal.t('Cod eroare: 64-102  CAP 2.1 col.1 ≥ col 2 + col. 3 + col.4  pe toate rindurile - @col1 <  @SUM_COL2_COL4 ', { "@col1": col1, "@SUM_COL2_COL4": SUM_COL2_COL4 })
-            });
-        }
-
-
-    }
-
-
-
-    //     // Start 64-102
-
-    {
-
-
-
-        if (!isNaN(Number(values["CAP21_R2109_C1"]))) {
-            var col1 = Number(values["CAP21_R2109_C1"]);
-        }
-
-        if (!isNaN(Number(values["CAP21_R2109_C2"]))) {
-            var col2 = Number(values["CAP21_R2109_C2"]);
-        }
-
-        if (!isNaN(Number(values["CAP21_R2109_C3"]))) {
-            var col3 = Number(values["CAP21_R2109_C3"]);
-        }
-
-        // if (!isNaN(Number(values["CAP21_R2104_C4"]))) {
-        //     var col4 = Number(values["CAP21_R2104_C4"]);
-        // }
-        var SUM_COL2_COL4 = col2 + col3
-
-        if (col1 < SUM_COL2_COL4) {
-            webform.errors.push({
-                'fieldName': 'CAP21_R2109_C1',
-                'weight': 9,
-                'msg': Drupal.t('Cod eroare: 64-102  CAP 2.1 col.1 ≥ col 2 + col. 3 + col.4  pe toate rindurile - @col1 <  @SUM_COL2_COL4 ', { "@col1": col1, "@SUM_COL2_COL4": SUM_COL2_COL4 })
-            });
-        }
-
-
-    }
-
-
-
-    webform.validatorsStatus.asa = 1;
+     //End 64-102
+   
+     webform.validatorsStatus.asa = 1;
     validateWebform();
 };
