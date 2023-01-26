@@ -762,6 +762,45 @@ webform.validators.asa = function (v, allowOverpass) {
     }
 
   // End   64 - 104 
+
+
+
+
+    // Start 64 - 105
+    // if (!isNaN(Number(values["CAP21_R" + i + "-3_C1"]))) {
+    //     var col3 = Number(values["CAP21_R" + i + "-3_C1"]);
+    // }
+
+    if (!isNaN(Number(values["CAP2_R2961_C1"]))) {
+        var col2 = Number(values["CAP2_R2961_C1"]);
+    }
+
+    if (!isNaN(Number(values["CAP2_R2962_C1"]))) {
+        var col4 = Number(values["CAP2_R2962_C1"]);
+    }
+
+
+
+    if (!isNaN(Number(values["CAP2_R296_C1"]))) {
+        var col1 = Number(values["CAP2_R296_C1"]);
+    }
+
+    var SUM_COL2_COL4 = col2 + col4
+    var SUM_COL2_COL4_F = parseFloat(SUM_COL2_COL4.toFixed(1));
+
+    if (col1 < SUM_COL2_COL4_F) {
+        webform.errors.push({
+            'fieldName': 'CAP2_R293_C1',
+            'weight': 6,
+            'msg': Drupal.t('Cod eroare: 64-105  CAP.2 [r.296 c.1] >= [r.2961c.1] + [r.2962 c.1] - @col1 <   @SUM_COL2_COL4_F ', { "@col1": col1, "@SUM_COL2_COL4_F": SUM_COL2_COL4_F })
+        });
+    }
+
+  // End   64 - 105 
+
+
+
+
    
      webform.validatorsStatus.asa = 1;
     validateWebform();
