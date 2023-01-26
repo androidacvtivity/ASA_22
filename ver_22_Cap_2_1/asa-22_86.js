@@ -790,7 +790,7 @@ webform.validators.asa = function (v, allowOverpass) {
 
     if (col1 < SUM_COL2_COL4_F) {
         webform.errors.push({
-            'fieldName': 'CAP2_R293_C1',
+            'fieldName': 'CAP2_R296_C1',
             'weight': 6,
             'msg': Drupal.t('Cod eroare: 64-105  CAP.2 [r.296 c.1] >= [r.2961c.1] + [r.2962 c.1] - @col1 <   @SUM_COL2_COL4_F ', { "@col1": col1, "@SUM_COL2_COL4_F": SUM_COL2_COL4_F })
         });
