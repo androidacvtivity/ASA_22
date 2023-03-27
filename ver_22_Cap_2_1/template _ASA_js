@@ -1,22 +1,26 @@
-// Calculate the total value of CAP2_R241_C1 through CAP2_R243_C1
-    function calculateTotalCap2R241ToR243C1(values) {
-        return Decimal(values.CAP2_R241_C1 || 0)
-            .plus(values.CAP2_R242_C1 || 0)
-            .plus(values.CAP2_R243_C1 || 0);
-    }
+//About this variable in Drupal
 
-    // Check if CAP2_R240_C1 is less than the total value of CAP2_R241_C1 through CAP2_R243_C1
-    function checkCap2R240C1(values, webform) {
-        var totalCap2R241ToR243C1 = calculateTotalCap2R241ToR243C1(values);
+//Name TITLU_R3_C31
 
-       
-        if (Decimal(values.CAP2_R240_C1 || 0).lessThan(totalCap2R241ToR243C1)) {
-            webform.errors.push({
-                'fieldName': 'CAP2_R240_C1',
-                'msg': Drupal.t('Cod eroare: 64-034, [r.240 c.1] >= [r.241c.1] + [r.242 c.1] + [r.243 c.1] -  @CAP2_R240_C1 <   @totalCap2R241ToR243C1', { "@CAP2_R240_C1": values.CAP2_R240_C1, "@totalCap2R241ToR243C1": totalCap2R241ToR243C1.toFixed() })
-            });
-        }
-    }
+//Tip - text
 
-    // Call the checkCap2R240C1 function
-    checkCap2R240C1(values, webform);
+//Widget - textfield
+
+//This code check
+
+if (!values.TITLU_R3_C31) {
+    webform.errors.push({
+        'fieldName': 'TITLU_R3_C31',
+        'msg': Drupal.t('Cod eroare: A.09, Dacă nu sunt completate în antet Nr tel.  atunci - eroare critice')
+    });
+}
+
+
+//Change this code -
+//    1. this code must check if text - error
+//display in "msg": Drupal.t() - Enter only 9 - digit phone number required
+//2. Check if it is a number - it must be of 9 mandatory digits and the first one must be 0
+
+
+
+

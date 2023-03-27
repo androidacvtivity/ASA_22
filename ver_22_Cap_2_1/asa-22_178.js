@@ -534,12 +534,31 @@ webform.validators.asa = function (v, allowOverpass) {
         });
     }
 
-    if (!values.TITLU_R3_C31) {
+    // if (!values.TITLU_R3_C31) {
+    //     webform.errors.push({
+    //         'fieldName': 'TITLU_R3_C31',
+    //         'msg': Drupal.t('Cod eroare: A.09, Dacă nu sunt completate în antet Nr tel.  atunci - eroare critice')
+    //     });
+    // }
+
+//-------------------add  --
+    // Check if the field is empty or has more than 9 digits
+    if (!values.TITLU_R3_C31 || !/^[0-9]{9}$/.test(values.TITLU_R3_C31)) {
         webform.errors.push({
             'fieldName': 'TITLU_R3_C31',
-            'msg': Drupal.t('Cod eroare: A.09, Dacă nu sunt completate în antet Nr tel.  atunci - eroare critice')
+            'msg': Drupal.t(' Cod eroare: A.09 Introduceți doar un număr de telefon format din 9 cifre')
         });
     }
+
+    // Check if the first digit is 0
+    if (values.TITLU_R3_C31 && values.TITLU_R3_C31[0] !== '0') {
+        webform.errors.push({
+            'fieldName': 'TITLU_R3_C31',
+            'msg': Drupal.t(' Cod eroare: A.09 Prima cifră a numărului de telefon trebuie să fie 0')
+        });
+    }
+
+
 
     // if (!(Decimal(values.CAP7_R700_C1 || 0) <= Decimal(values.CAP1_R112_C1 || 0))) {
     //     webform.errors.push({
@@ -1090,7 +1109,7 @@ webform.validators.asa = function (v, allowOverpass) {
 
         if (Decimal(values.CAP2_R296_C1 || 0).lessThan(total64_105)) {
             webform.errors.push({
-                'fieldName': 'CAP2_R240_C1',
+                'fieldName': 'CAP2_R296_C1',
                 'msg': Drupal.t('Cod eroare: 64-105  CAP.2 [r.296 c.1] >= [r.2961c.1] + [r.2962 c.1] -  @CAP2_R296_C1 <   @total64_105', { "@CAP2_R296_C1": values.CAP2_R296_C1, "@total64_105": total64_105.toFixed() })
             });
         }
@@ -1149,7 +1168,7 @@ webform.validators.asa = function (v, allowOverpass) {
 
             if (Decimal(values.CAP2_R220_C1 || 0).lessThan(totalCap2R221ToR222C1)) {
                 webform.errors.push({
-                    'fieldName': 'CAP2_R240_C1',
+                    'fieldName': 'CAP2_R220_C1',
                     'msg': Drupal.t('Cod eroare: 64-033, [r.220 c.1] >= [r.221c.1] + [r.222 c.1] -  @CAP2_R220_C1 <   @totalCap2R221ToR222C1', { "@CAP2_R220_C1": values.CAP2_R220_C1, "@totalCap2R221ToR222C1": totalCap2R221ToR222C1.toFixed() })
                 });
             }
@@ -1191,7 +1210,6 @@ webform.validators.asa = function (v, allowOverpass) {
     
 
     //End 64-034
-
 
 
 
