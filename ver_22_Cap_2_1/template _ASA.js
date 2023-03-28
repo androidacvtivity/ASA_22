@@ -85,3 +85,94 @@ var sumR240 = Decimal(values.CAP2_R241_C1 || 0).plus(values.CAP2_R242_C1 || 0).p
 }
 
 //End 64-033
+
+
+//64 - 006
+
+//Why this js  code work correctly
+
+  var sumR291 = Decimal(values.CAP2_R2911_C1 || 0).plus(values.CAP2_R2912_C1 || 0);
+    if (Decimal(values.CAP2_R291_C1 || 0).lessThan(sumR291)) {
+        webform.errors.push({
+            'fieldName': 'CAP2_R291_C1',
+            'msg': Drupal.t('Cod eroare: 64-006, [r.291 c.1] >= [r.2911c.1] + [r.2912 c.1]')
+        });
+    }
+
+    //but this no 
+
+var sumR291 = Decimal(values.CAP2_R2911_C1 || 0).plus(values.CAP2_R2912_C1 || 0);
+var cap2R291C1 = Decimal(values.CAP2_R291_C1 || 0);
+if (
+   // cap2R291C1 < sumR291
+    Decimal(cap2R291C1 || 0).lessThan(sumR291)
+
+    ) {
+    var errorMsg = Drupal.t('Cod eroare: 64-006, r.291 c.1 >= r.2911c.1 + r.2912 c.1 - [r.291 c.1] < [r.2911c.1] + [r.2912 c.1]', {
+        '[r.291 c.1]': cap2R291C1,
+        '[r.2911c.1]': Decimal(values.CAP2_R2911_C1 || 0),
+        '[r.2912 c.1]': Decimal(values.CAP2_R2912_C1 || 0)
+    });
+    webform.errors.push({
+        'fieldName': 'CAP2_R291_C1',
+        'msg': errorMsg
+    });
+}
+
+//Second code show this errorMsg -- Capitol 2 Rînd. 291 col.1 - Cod eroare: 64-006, r.291 c.1 >= r.2911c.1 + r.2912 c.1 -
+
+//but 1543.4 < 468.4 + 431.6 -- not corectly
+
+//They have same logic
+
+//End 64 - 006
+
+//Why is wrong in this code
+
+//Convert the Decimal objects to numbers and after compare 
+
+var sumR320 = Decimal(values.CAP3_R330_C1 || 0).plus(values.CAP3_R340_C1 || 0).plus(values.CAP3_R350_C1 || 0);
+
+if (!(Decimal(values.CAP3_R320_C1 || 0) >= sumR320)) {
+    webform.errors.push({
+        'fieldName': 'CAP3_R320_C1',
+        'msg': Drupal.t('Cod eroare: 64-038, Cap.3 [r.320 c.1] >= [r.330 c.1]+ [r.340 c.1] + [r.350 c.1]')
+    });
+}
+
+
+
+//First code 
+var sumR320 = Decimal(values.CAP3_R330_C1 || 0).plus(values.CAP3_R340_C1 || 0).plus(values.CAP3_R350_C1 || 0);
+
+if (!(Decimal(values.CAP3_R320_C1 || 0).toNumber() >= sumR320.toNumber())) {
+    webform.errors.push({
+        'fieldName': 'CAP3_R320_C1',
+        'msg': Drupal.t('Cod eroare: 64-038, Cap.3 [r.320 c.1] >= [r.330 c.1]+ [r.340 c.1] + [r.350 c.1]')
+    });
+}
+
+//Second code 
+
+
+// Show all variable and use for 
+// check             'msg': Drupal.t('Cod eroare: 64-038, Cap.3 [r.320 c.1] >= [r.330 c.1]+ [r.340 c.1] + [r.350 c.1]')
+
+// that
+
+//     < 
+
+var sumR320 = Decimal(values.CAP3_R330_C1 || 0).plus(values.CAP3_R340_C1 || 0).plus(values.CAP3_R350_C1 || 0);
+
+if (!(Decimal(values.CAP3_R320_C1 || 0) >= sumR320)) {
+    webform.errors.push({
+        'fieldName': 'CAP3_R320_C1',
+        'msg': Drupal.t('Cod eroare: 64-038, Cap.3 [r.320 c.1] >= [r.330 c.1]+ [r.340 c.1] + [r.350 c.1]')
+    });
+}
+
+
+//Which code is correct ?
+
+
+
