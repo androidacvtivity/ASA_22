@@ -1,0 +1,40 @@
+//About this variable in Drupal
+
+//Name TITLU_R3_C31
+
+//Tip - text
+
+//Widget - textfield
+
+//This code check
+
+if (!values.TITLU_R3_C31) {
+    webform.errors.push({
+        'fieldName': 'TITLU_R3_C31',
+        'msg': Drupal.t('Cod eroare: A.09, Dacă nu sunt completate în antet Nr tel.  atunci - eroare critice')
+    });
+}
+
+
+//Change this code -
+//    1. this code must check if text - error
+//display in "msg": Drupal.t() - Enter only 9 - digit phone number required
+//2. Check if it is a number - it must be of 9 mandatory digits and the first one must be 0
+
+//64-006 Start
+
+//Why this js  code work correctly
+
+
+  var sumR291 = Decimal(values.CAP2_R2911_C1 || 0).plus(values.CAP2_R2912_C1 || 0);
+    if (Decimal(values.CAP2_R291_C1 || 0).lessThan(sumR291)) {
+        webform.errors.push({
+            'fieldName': 'CAP2_R291_C1',
+            'msg': Drupal.t('Cod eroare: 64-006, [r.291 c.1] >= [r.2911c.1] + [r.2912 c.1]')
+        });
+    }
+
+
+
+//but this no
+
