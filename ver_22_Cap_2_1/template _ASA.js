@@ -176,3 +176,210 @@ if (!(Decimal(values.CAP3_R320_C1 || 0) >= sumR320)) {
 
 
 
+
+//CAP 2.1 rd. 2100 col.1 = (rd. 2101+…+rd. 2130) col.1
+//In this code js logic  it is  this 
+//64-102  CAP 2.1 col.1 ≥ col 2 + col. 3 + col.4  pe toate rindurile
+
+{
+    function fun_row_36_002(row) {
+        var i;
+        i = row;
+        if (
+
+
+            2102 == i || 2104 == i || 2110 == i || 2111 == i || 2112 == i || 2113 == i || 2114 == i || 2115 == i
+            || 2116 == i || 2117 == i || 2118 == i || 2119 == i || 2121 == i || 2123 == i || 2124 == i || 2125 == i || 2127 == i
+            || 2128 == i
+
+
+
+        )
+            return true;
+
+    }
+
+    // Start 64-102
+    for (var i = 2100; i < 2131; i++) {
+        {
+            if (fun_row_36_002((i))) {
+
+                if (!isNaN(Number(values["CAP21_R" + i + "_3_C1"]))) {
+                    var col3 = Number(values["CAP21_R" + i + "_3_C1"]);
+                }
+
+                if (!isNaN(Number(values["CAP21_R" + i + "_2_C1"]))) {
+                    var col2 = Number(values["CAP21_R" + i + "_2_C1"]);
+                }
+
+                if (!isNaN(Number(values["CAP21_R" + i + "_4_C1"]))) {
+                    var col4 = Number(values["CAP21_R" + i + "_4_C1"]);
+                }
+
+
+
+                if (!isNaN(Number(values["CAP21_R" + i + "_1_C1"]))) {
+                    var col1 = Number(values["CAP21_R" + i + "_1_C1"]);
+                }
+
+                var SUM_COL2_COL4 = (col2 + col3 + col4).toFixed(1)
+
+                if (col1 < (SUM_COL2_COL4)) {
+                    webform.errors.push({
+                        'fieldName': 'CAP21_R' + i + '_1_C1',
+                        'weight': 1,
+                        'msg': Drupal.t('Cod eroare: 64-102  CAP 2.1 col.1 ≥ col 2 + col. 3 + col.4  pe toate rindurile - @col1 <  @SUM_COL2_COL4 ', { "@col1": col1, "@SUM_COL2_COL4": SUM_COL2_COL4 })
+                    });
+                }
+
+            }
+
+
+
+
+
+
+
+        }
+    }
+}
+     //End 64-102
+
+
+
+
+//In this code js logic  it is  this
+//64-102  CAP 2.1 col.1 ≥ col 2 + col. 3 + col.4  pe toate rindurile.
+// /Type of variable is float. 
+
+// -- Start    64-102
+
+{
+    function fun_row_36_001(row) {
+        var i;
+        i = row;
+        if (
+
+
+            2130 == i || 2120 == i || 2101 == i || 2103 == i || 2105 == i || 2106 == i || 2107 == i || 2108 == i
+            || 2109 == i
+
+
+
+        )
+            return true;
+
+    }
+
+  
+    for (var i = 2100; i < 2131; i++) {
+        {
+            if (fun_row_36_001((i))) {
+
+                if (!isNaN(Number(values["CAP21_R" + i + "_3_C1"]))) {
+                    var col3 = Number(values["CAP21_R" + i + "_3_C1"]);
+                }
+
+                if (!isNaN(Number(values["CAP21_R" + i + "_2_C1"]))) {
+                    var col2 = Number(values["CAP21_R" + i + "_2_C1"]);
+                }
+
+
+                if (!isNaN(Number(values["CAP21_R" + i + "_1_C1"]))) {
+                    var col1 = Number(values["CAP21_R" + i + "_1_C1"]);
+                }
+
+                var SUM_COL2_COL4 = (col2 + col3).toFixed(1)
+
+                if (col1 < (SUM_COL2_COL4)) {
+                    webform.errors.push({
+                        'fieldName': 'CAP21_R' + i + '_1_C1',
+                        'weight': 1,
+                        'msg': Drupal.t('Cod eroare: 64-102  CAP 2.1 col.1 ≥ col 2 + col. 3 + col.4  pe toate rindurile - @col1 <  @SUM_COL2_COL4 ', { "@col1": col1, "@SUM_COL2_COL4": SUM_COL2_COL4 })
+                    });
+                }
+
+            }
+
+
+
+
+
+
+
+        }
+    }
+}
+
+
+
+{
+    function fun_row_36_002(row) {
+        var i;
+        i = row;
+        if (
+
+
+            2102 == i || 2104 == i || 2110 == i || 2111 == i || 2112 == i || 2113 == i || 2114 == i || 2115 == i
+            || 2116 == i || 2117 == i || 2118 == i || 2119 == i || 2121 == i || 2123 == i || 2124 == i || 2125 == i || 2127 == i
+            || 2128 == i
+
+
+
+        )
+            return true;
+
+    }
+
+ 
+    for (var i = 2100; i < 2131; i++) {
+        {
+            if (fun_row_36_002((i))) {
+
+                if (!isNaN(Number(values["CAP21_R" + i + "_3_C1"]))) {
+                    var col3 = Number(values["CAP21_R" + i + "_3_C1"]);
+                }
+
+                if (!isNaN(Number(values["CAP21_R" + i + "_2_C1"]))) {
+                    var col2 = Number(values["CAP21_R" + i + "_2_C1"]);
+                }
+
+                if (!isNaN(Number(values["CAP21_R" + i + "_4_C1"]))) {
+                    var col4 = Number(values["CAP21_R" + i + "_4_C1"]);
+                }
+
+
+
+                if (!isNaN(Number(values["CAP21_R" + i + "_1_C1"]))) {
+                    var col1 = Number(values["CAP21_R" + i + "_1_C1"]);
+                }
+
+                var SUM_COL2_COL4 = (col2 + col3 + col4).toFixed(1)
+
+                if (col1 < (SUM_COL2_COL4)) {
+                    webform.errors.push({
+                        'fieldName': 'CAP21_R' + i + '_1_C1',
+                        'weight': 1,
+                        'msg': Drupal.t('Cod eroare: 64-102  CAP 2.1 col.1 ≥ col 2 + col. 3 + col.4  pe toate rindurile - @col1 <  @SUM_COL2_COL4 ', { "@col1": col1, "@SUM_COL2_COL4": SUM_COL2_COL4 })
+                    });
+                }
+
+            }
+
+
+
+
+
+
+
+        }
+    }
+}
+     //End 64-102
+
+    
+     //but is correctly ? 
+
+     //
+     //Modify me logic of this code, check if this condition --- (CAP 2.1 rd. 2100 col.1 = (row. 2101+…+rwo.2130) col.1)
+     //is true if not true show error.
