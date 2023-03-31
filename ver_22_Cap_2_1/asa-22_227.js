@@ -1084,12 +1084,6 @@ webform.validators.asa = function (v, allowOverpass) {
             'msg': Drupal.t('Cod eroare: 64-101  CAP 2.1 rd. 2100 col.1 ≠ (rd. 2101+…+rd.2130) col.1. col1 = @col1, sumCol1 = @sumCol1', { '@col1': col1, '@sumCol1': sumCol1 })
         });
     }
-// End 64-101
-
-
-
-
-
 
   // Start 64 - 103
     // if (!isNaN(Number(values["CAP21_R" + i + "-3_C1"]))) {
@@ -1125,7 +1119,10 @@ webform.validators.asa = function (v, allowOverpass) {
 
     }
 
-  // End   64 - 103 
+
+
+
+
 
 
 
