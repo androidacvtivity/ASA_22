@@ -908,7 +908,7 @@ webform.validators.asa = function (v, allowOverpass) {
 
 
 
-
+////I need the result of both variables to be rounded to one sign after zero in the calculation and then make the logical comparison
 
 
 
@@ -1064,7 +1064,11 @@ webform.validators.asa = function (v, allowOverpass) {
 
 
 //Show values col1 and sumCol1 in   'msg': Drupal.t('Cod eroare: 64-101  CAP 2.1 rd. 2100 col.1 ≠ (rd. 2101+…+rd.2130) col.1')
-// Start 64-101
+
+//I need the result of both variables to be rounded to one sign after zero in the calculation and then make the logical comparison
+// because now it shows an error -- Capitol 2.1 Rînd. 2100 col.1 - Cod eroare: 64-101 CAP 2.1 rd. 2100 col.1 ≠ (rd. 2101+…+rd.2130) col.1. col1 = 10401.8, sumCol1 = 10401.800000000001
+
+    // Start 64-101
     var sumCol1 = 0;
 
     for (var i = 2101; i < 2131; i++) {
@@ -1077,13 +1081,15 @@ webform.validators.asa = function (v, allowOverpass) {
         var col1 = Number(values["CAP21_R2100_1_C1"]);
     }
 
-    if (col1 !== sumCol1) {
+    if (Number(col1.toFixed(1)) !== Number(sumCol1.toFixed(1))) {
         webform.errors.push({
             'fieldName': 'CAP21_R2100_1_C1',
             'weight': 1,
-            'msg': Drupal.t('Cod eroare: 64-101  CAP 2.1 rd. 2100 col.1 ≠ (rd. 2101+…+rd.2130) col.1. col1 = @col1, sumCol1 = @sumCol1', { '@col1': col1, '@sumCol1': sumCol1 })
+            'msg': Drupal.t('Cod eroare: 64-101  CAP 2.1 rd. 2100 col.1 ≠ (rd. 2101+…+rd.2130) col.1. col1 = @col1, sumCol1 = @sumCol1', { '@col1': col1.toFixed(1), '@sumCol1': sumCol1.toFixed(1) })
         });
     }
+// End  64-101
+
 
   // Start 64 - 103
     // if (!isNaN(Number(values["CAP21_R" + i + "-3_C1"]))) {
