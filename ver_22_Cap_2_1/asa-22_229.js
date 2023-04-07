@@ -1225,7 +1225,7 @@ webform.validators.asa = function (v, allowOverpass) {
         // Calculate the total value of CAP2_R221_C1 through CAP2_R243_C1
         function calculateTotalCap2R221ToR222C1(values) {
             return Decimal(values.CAP2_R221_C1 || 0)
-                .plus(values.CAP2_R221_C1 || 0);
+                .plus(values.CAP2_R222_C1 || 0);
                
         }
 
