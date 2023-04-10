@@ -350,64 +350,51 @@ webform.validators.asa = function (v, allowOverpass) {
     // }
 
 
-
-    
-
+    // Start 64-006
     var sumR291 = Decimal(values.CAP2_R2911_C1 || 0).plus(values.CAP2_R2912_C1 || 0);
     var cap2R291C1 = Decimal(values.CAP2_R291_C1 || 0);
-    if (
-       
-        Decimal(cap2R291C1 || 0).lessThan(sumR291)
 
-    ) {
-        var errorMsg = Drupal.t('Cod eroare: 64-006, r.291 c.1 >= r.2911c.1 + r.2912 c.1 - [r.291 c.1] < [r.2911c.1] + [r.2912 c.1]', {
-            '[r.291 c.1]': cap2R291C1,
-            '[r.2911c.1]': Decimal(values.CAP2_R2911_C1 || 0),
-            '[r.2912 c.1]': Decimal(values.CAP2_R2912_C1 || 0)
+    // Round the values to one sign after zero
+    sumR291 = sumR291.toDecimalPlaces(1);
+    cap2R291C1 = cap2R291C1.toDecimalPlaces(1);
+
+    if (cap2R291C1.lessThan(sumR291)) {
+        var errorMsg = Drupal.t('Cod eroare: 64-006, r.291 c.1 >= r.2911c.1 + r.2912 c.1 - [r.291 c.1] < [r.2911c.1] + [r.2912 c.1] = [sumR291]', {
+            '[sumR291]': sumR291.toFixed(1),
+            '[r.291 c.1]': cap2R291C1.toFixed(1),
+            '[r.2911c.1]': Decimal(values.CAP2_R2911_C1 || 0).toDecimalPlaces(1),
+            '[r.2912 c.1]': Decimal(values.CAP2_R2912_C1 || 0).toDecimalPlaces(1)
         });
         webform.errors.push({
             'fieldName': 'CAP2_R291_C1',
             'msg': errorMsg
         });
     }
-
-
+// End 64-006
     // var sumR310 = Decimal(values.CAP2_R311_C1 || 0).plus(values.CAP2_R312_C1 || 0);
-
     // if (!(Decimal(values.CAP2_R310_C1 || 0) >= sumR310)) {
     //     webform.errors.push({
     //         'fieldName': 'CAP2_R310_C1',
     //         'msg': Drupal.t('Cod eroare: 64-037, Cap.2 [r.310 c.1] >= [r.311 c.1]+ [r.312 c.1]')
     //     });
     // }
-
-
-    //
-// //This code don't show error mesage 
-//     var sumR311_312 = Decimal(values.CAP2_R311_C1 || 0).plus(values.CAP2_R312_C1 || 0);
-//     var sumR310_037 = Decimal(values.CAP2_R310_C1 || 0);
-
-//     if (sumR310_037.toNumber() < sumR311_312.toNumber() ) {
-//         webform.errors.push({
-//             'fieldName': 'CAP2_R310_C1',
-//             'msg': Drupal.t('Cod eroare: 64-037, Cap.2 [r.310 c.1] >= [r.311 c.1]+ [r.312 c.1]',{            
-//              '[r.291 c.1]': cap2R291C1,
-//                 '[r.2911c.1]': Decimal(values.CAP2_R2911_C1 || 0),
-//                 '[r.2912 c.1]': Decimal(values.CAP2_R2912_C1 || 0)
-//             )
-//         });
-//     }
-
-
+//Start 64-037
     var sumR311_312 = Decimal(values.CAP2_R311_C1 || 0).plus(values.CAP2_R312_C1 || 0);
     var sumR310_037 = Decimal(values.CAP2_R310_C1 || 0);
 
-    if (sumR310_037.toNumber() < sumR311_312.toNumber()) {
-        var errorMsg = Drupal.t('Cod eroare: 64-037, Cap.2 [r.310 c.1] >= [r.311 c.1] + [r.312 c.1] - [r.310 c.1] < [r.311 c.1] + [r.312 c.1]', {
-            '[r.310 c.1]': sumR310_037,
-            '[r.311 c.1]': Decimal(values.CAP2_R311_C1 || 0),
-            '[r.312 c.1]': Decimal(values.CAP2_R312_C1 || 0),
-            '[sumR311_312]': sumR311_312
+    // Round the values to one sign after zero
+    sumR311_312 = sumR311_312.toDecimalPlaces(1);
+    sumR310_037 = sumR310_037.toDecimalPlaces(1);
+
+
+
+    if (sumR310_037.toNumber().toFixed(1) < sumR311_312.toNumber().toFixed(1)) {
+        var errorMsg = Drupal.t('Cod eroare: 64-037, Cap.2 [r.310 c.1] >= [r.311 c.1] + [r.312 c.1] - [r.310 c.1] < [r.311 c.1] + [r.312 c.1] = [sumR311_312] ', {
+            '[sumR311_312]': sumR311_312.toFixed(1), 
+            '[r.310 c.1]': sumR310_037.toFixed(1), 
+            '[r.311 c.1]': Decimal(values.CAP2_R311_C1 || 0).toDecimalPlaces(1), 
+            '[r.312 c.1]': Decimal(values.CAP2_R312_C1 || 0).toDecimalPlaces(1), 
+            '[sumR311_312]': sumR311_312.toFixed(1)
         });
         webform.errors.push({
             'fieldName': 'CAP2_R310_C1',
@@ -416,6 +403,7 @@ webform.validators.asa = function (v, allowOverpass) {
     }
 
 
+//End 64-037
 
     //  var sumR320 = Decimal(values.CAP3_R330_C1 || 0).plus(values.CAP3_R340_C1 || 0).plus(values.CAP3_R350_C1 || 0);
 
@@ -426,20 +414,28 @@ webform.validators.asa = function (v, allowOverpass) {
     //     });
     // }
 
+//Start 64-038
 
+//Modifi that js code for Drupal 
+//I need the result of both variables to be rounded to one sign after zero in the calculation and then make the logical comparison
 
     var cap3R330C1 = Decimal(values.CAP3_R330_C1 || 0);
     var cap3R340C1 = Decimal(values.CAP3_R340_C1 || 0);
     var cap3R350C1 = Decimal(values.CAP3_R350_C1 || 0);
     var cap3R320C1 = Decimal(values.CAP3_R320_C1 || 0);
+
+    
     var sumR320 = cap3R330C1.plus(cap3R340C1).plus(cap3R350C1);
 
-    if (!(cap3R320C1 >= sumR320)) {
+    if ((cap3R320C1.toFixed(1) < sumR320.toFixed(1))) {
         webform.errors.push({
             'fieldName': 'CAP3_R320_C1',
-            'msg': Drupal.t('Cod eroare: 64-038, Cap.3 [r.320 c.1 = @cap3R320C1] < [r.330 c.1 = @cap3R330C1] + [r.340 c.1 = @cap3R340C1] + [r.350 c.1 = @cap3R350C1]', { '@cap3R320C1': cap3R320C1, '@cap3R330C1': cap3R330C1, '@cap3R340C1': cap3R340C1, '@cap3R350C1': cap3R350C1 })
+            'msg': Drupal.t('Cod eroare: 64-038, Cap.3 [r.320 c.1 = @cap3R320C1] < [r.330 c.1 = @cap3R330C1] + [r.340 c.1 = @cap3R340C1] + [r.350 c.1 = @cap3R350C1],  [@sumR320]', { '@sumR320': sumR320.toFixed(1), '@cap3R320C1': cap3R320C1.toFixed(1), '@cap3R330C1': cap3R330C1.toFixed(1), '@cap3R340C1': cap3R340C1.toFixed(1), '@cap3R350C1': cap3R350C1.toFixed(1) })
         });
     }
+
+//End 64-038
+
 
 
     if (Decimal(values.CAP1_R111_C1 || 0).greaterThan(values.CAP1_R110_C1 || 0)) {
@@ -600,8 +596,6 @@ webform.validators.asa = function (v, allowOverpass) {
         });
     }
 
-
-
     // if (!(Decimal(values.CAP7_R700_C1 || 0) <= Decimal(values.CAP1_R112_C1 || 0))) {
     //     webform.errors.push({
     //         'fieldName': 'CAP7_R700_C1',
@@ -609,58 +603,7 @@ webform.validators.asa = function (v, allowOverpass) {
     //     });
     // }
 
-
-
-//Here is syntax errors correctly 
-
-    //   function checkCAP(CAP7_R700_C1, CAP1_R112_C1) {
-    //   if (isNaN(parseFloat(CAP7_R700_C1)) || isNaN(parseFloat(CAP1_R112_C1))) {
-    //         throw new Error('Invalid input: both arguments must be numeric');
-    //     }
-    //     if (parseFloat(CAP7_R700_C1) > parseFloat(CAP1_R112_C1)) {
-    //         throw new Error('Cod eroare: 64-045, Cap.7 [r.700 c.1] <= Cap.1 [r.112 c.1] ,  @CAP7_R700_C1 <  @CAP1_R112_C1', { "@CAP7_R700_C1": CAP7_R700_C1, "@CAP1_R112_C1": CAP1_R112_C1 });}}
-
-
-
-    // try {
-    //     checkCAP(Decimal(values.CAP7_R700_C1 || 0), Decimal(values.CAP1_R112_C1 || 0));
-    // } catch (err) {
-        
-
-    //     webform.errors.push({
-    //          'fieldName': 'CAP7_R700_C1',
-    //         'msg': err.message
-
-
-    //      });
-    // }
-
-
-
-    // function checkCAP(CAP7_R700_C1, CAP1_R112_C1) {
-        
-    //     if (isNaN(parseFloat(CAP7_R700_C1)) || isNaN(parseFloat(CAP1_R112_C1))) {
-    //         throw new Error('Invalid input: both arguments must be numeric');
-    //     }
-    //     if (parseFloat(CAP7_R700_C1) > parseFloat(CAP1_R112_C1)) {
-    //         throw new Error('Cod eroare: 64-045, Cap.7 [r.700 c.1] <=  Cap.1 [r.112 c.1] - @CAP7_R700_C1 < @CAP1_R112_C1', {
-    //             "@CAP7_R700_C1": CAP7_R700_C1,
-    //             "@CAP1_R112_C1": CAP1_R112_C1
-    //         });
-    //     }
-    // }
-
-    // try {
-    //     checkCAP(parseFloat(values.CAP7_R700_C1 || 0), parseFloat(values.CAP1_R112_C1 || 0));
-    // } catch (err) {
-    //     webform.errors.push({
-    //         'fieldName': 'CAP7_R700_C1',
-    //         'msg': err.message
-    //     });
-    // }
-
-//Again not shhow value 
-
+    // Start 64-045
 // ---------------------------------------------- 
 
     function checkCAP(CAP7_R700_C1, CAP1_R112_C1) {
@@ -668,17 +611,15 @@ webform.validators.asa = function (v, allowOverpass) {
             throw new Error('Invalid input: both arguments must be numeric');
         }
         if (parseFloat(CAP7_R700_C1) > parseFloat(CAP1_R112_C1)) {
-            throw new Error('Cod eroare: 64-045, Cap.7 [r.700 c.1] <=  Cap.1 [r.112 c.1], @CAP7_R700_C1 < @CAP1_R112_C1', {
+            throw new Error('Cod eroare: 64-045, Cap.7 [r.700 c.1] <=  Cap.1 [r.112 c.1], @CAP7_R700_C1 > @CAP1_R112_C1', {
                 "@CAP7_R700_C1": CAP7_R700_C1,
                 "@CAP1_R112_C1": CAP1_R112_C1
             });
         }
     }
 
-    var CAP7_R700_C1 = parseFloat(values.CAP7_R700_C1) || 0;
-    var CAP1_R112_C1 = parseFloat(values.CAP1_R112_C1) || 0;
-
-
+    var CAP7_R700_C1 = parseFloat((values.CAP7_R700_C1) || 0).toFixed(1);
+    var CAP1_R112_C1 = parseFloat((values.CAP1_R112_C1) || 0).toFixed(1);
 
     try {
         checkCAP(CAP7_R700_C1, CAP1_R112_C1);
@@ -693,7 +634,7 @@ webform.validators.asa = function (v, allowOverpass) {
     }
 
 
-
+// End  64-045
 
 
 
