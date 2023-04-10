@@ -728,26 +728,6 @@ webform.validators.asa = function (v, allowOverpass) {
 //-----------------------------------------------
 
 
-
-
-
-
-
-
-
-
-
-
-//--------------------------------------------------------------------------------------------------
-
-    // if (!(Decimal(values.CAP8_R800_C1 || 0) <= Decimal(values.CAP1_R111_C1 || 0))) {
-    //     webform.errors.push({
-    //         'fieldName': 'CAP8_R800_C1',
-    //         'msg': Drupal.t('Cod eroare: 64-049, Cap.8 [r.800 c.1] >= Cap.1 [r.111 c.1]')
-    //     });
-    // }
-
-
     function checkCAP_1(CAP8_R800_C1, CAP1_R111_C1) {
         if (isNaN(parseFloat(CAP8_R800_C1)) || isNaN(parseFloat(CAP1_R111_C1))) {
             throw new Error('Invalid input: both arguments must be numeric');
@@ -760,40 +740,7 @@ webform.validators.asa = function (v, allowOverpass) {
     var CAP8_R800_C1 = parseFloat(values.CAP8_R800_C1) || 0;
     var CAP1_R111_C1 = parseFloat(values.CAP1_R111_C1) || 0;
 
-
-
-    // try {
-    //     checkCAP_1(CAP8_R800_C1, CAP1_R111_C1);
-    // } catch (err) {
-
-    //     var errorMessage = Drupal.t(' Cod eroare: 64-050, Cap.8 [r.800 c.1] >= Cap.1 [r.111 c.1]', {
-    //         '@CAP8_R800_C1': CAP8_R800_C1,
-    //         '@CAP1_R111_C1': CAP1_R111_C1,
-    //     }) + ' - ' +  CAP8_R800_C1 + ' < ' + CAP1_R111_C1;
-
-
-    //     webform.errors.push({
-    //         'fieldName': 'CAP8_R800_C1',
-            
-    //         'msg': errorMessage,
-    //     });
-    // }
-
-
-
-
-
-    // if (!(Decimal(values.CAP7_R720_C1 || 0) >= Decimal(values.CAP7_R721_C1 || 0))) {
-    //     webform.errors.push({
-    //         'fieldName': 'CAP7_R720_C1',
-    //         'msg': Drupal.t('Cod eroare: 64-046, Cap.7 [r.720 c.1] >= [r.721 c.1]')
-    //     });
-    // }
-
-
-
-
-//64-046
+    //64-046
 //---------------------------------------------------------------------------------
 
     var CAP7_R720_C1 = parseFloat(values.CAP7_R720_C1) || 0;
@@ -824,12 +771,6 @@ webform.validators.asa = function (v, allowOverpass) {
 //Start 64-052
 //---------------------------------------------------------------------------------
 
-    // if (!(Decimal(values.CAP8_R900_C1 || 0) >= Decimal(values.CAP8_R901_C1 || 0))) {
-    //     webform.errors.push({
-    //         'fieldName': 'CAP8_R900_C1',
-    //         'msg': Drupal.t('Cod eroare: 64-052, Cap.8 [r.900 c.1] >= [r.901 c.1]')
-    //     });
-    // }
 
 
     var CAP8_R900_C1 = parseFloat(values.CAP8_R900_C1) || 0;
@@ -853,32 +794,25 @@ webform.validators.asa = function (v, allowOverpass) {
             'msg': errorMessage,
         });
     }
-
-
-
-
 //------------------------------------------------------------------------------------------------------
 //End 64-052
-
-
-    // var sumR870 = Decimal(values.CAP8_R871_C1 || 0).plus(values.CAP8_R872_C1 || 0);
-
-    // if (!(Decimal(values.CAP8_R870_C1 || 0) >= sumR870)) {
-    //     webform.errors.push({
-    //         'fieldName': 'CAP8_R870_C1',
-    //         'msg': Drupal.t('Cod eroare: 64-049, Cap.8 [r.870 c.1] >= [r.871 c.1]+ [r.872 c.1]')
-    //     });
-    // }
-
-
 //Start 64-049
-    var sumR870 = parseFloat(values.CAP8_R871_C1 || 0) + parseFloat(values.CAP8_R872_C1 || 0); 
-    var CAP8_R870_C1 = parseFloat(values.CAP8_R870_C1) || 0;
-    var CAP8_R871_C1 = parseFloat(values.CAP8_R871_C1) || 0;
-    var CAP8_R872_C1 = parseFloat(values.CAP8_R872_C1) || 0;
+   
+    
+    var sumR870 = Decimal(values.CAP8_R871_C1 || 0).plus(values.CAP8_R872_C1 || 0);
+    var CAP8_R870_C1 = Decimal(values.CAP8_R870_C1 || 0);
+    var CAP8_R871_C1 = Decimal(values.CAP8_R871_C1 || 0);
+    var CAP8_R872_C1 = Decimal(values.CAP8_R872_C1 || 0);
+
+  
+
+    // Round the values to one sign after zero
+    sumR870 = sumR870.toDecimalPlaces(1);
+    CAP8_R870_C1 = CAP8_R870_C1.toDecimalPlaces(1);
+
    
 
-    if (CAP8_R870_C1 < sumR870) {
+    if (CAP8_R870_C1.lessThan(sumR870)) {
         webform.errors.push({
             'fieldName': 'CAP8_R870_C1',
             'msg': Drupal.t('Cod eroare: 64-049, Cap.8 [r.870 c.1] >= [r.871 c.1] = @CAP8_R871_C1 + [r.872 c.1] = @CAP8_R872_C1,   @CAP8_R870_C1 <  Suma  [r.871 c.1], [r.872 c.1] -   @sumR870.', { '@sumR870': sumR870, '@CAP8_R870_C1': CAP8_R870_C1,  '@CAP8_R871_C1': CAP8_R871_C1, '@CAP8_R872_C1': CAP8_R872_C1})
@@ -886,19 +820,6 @@ webform.validators.asa = function (v, allowOverpass) {
     }
 
 //End 64-049
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     // var sumR890 = parseFloat(values.CAP8_R891_C1 || 0) + parseFloat(values.CAP8_R892_C1 || 0) + parseFloat(values.CAP8_R893_C1 || 0) + parseFloat(values.CAP8_R894_C1 || 0);
     // var CAP8_R890_C1 = parseFloat(values.CAP8_R890_C1) || 0;
@@ -911,14 +832,17 @@ webform.validators.asa = function (v, allowOverpass) {
     // }
 
 
-    var sumR890 = parseFloat(values.CAP8_R891_C1 || 0) + parseFloat(values.CAP8_R892_C1 || 0) + parseFloat(values.CAP8_R893_C1 || 0) + parseFloat(values.CAP8_R894_C1 || 0);
-    var CAP8_R890_C1 = parseFloat(values.CAP8_R890_C1) || 0;
+    var sumR890 = parseFloat((values.CAP8_R891_C1 || 0) + parseFloat(values.CAP8_R892_C1 || 0) + parseFloat(values.CAP8_R893_C1 || 0) + parseFloat(values.CAP8_R894_C1 || 0).toFixed(1));
+    var CAP8_R890_C1 = parseFloat((values.CAP8_R890_C1) || 0).toFixed(1);
     var CAP8_R891_C1 = parseFloat(values.CAP8_R891_C1) || 0;
     var CAP8_R892_C1 = parseFloat(values.CAP8_R892_C1) || 0;
     var CAP8_R893_C1 = parseFloat(values.CAP8_R893_C1) || 0;
     var CAP8_R894_C1 = parseFloat(values.CAP8_R894_C1) || 0;
 
-    if (CAP8_R890_C1 < sumR890) {
+    
+    sumR890 = sumR890.toFixed(1);
+
+    if (parseFloat(CAP8_R890_C1) < parseFloat(sumR890)) {
         webform.errors.push({
             'fieldName': 'CAP8_R890_C1',
             'msg': Drupal.t('Cod eroare: 64-051, Cap.8 [r.890 c.1] >= [r.891 c.1] = @CAP8_R891_C1 + [r.892 c.1] = @CAP8_R892_C1 + [r.893 c.1] = @CAP8_R893_C1 + [r.894 c.1] = @CAP8_R894_C1. @CAP8_R890_C1 <  Suma  [r.891 c.1], [r.892 c.1], [r.893 c.1], [r.894 c.1] -   @sumR890.', { '@sumR890': sumR890, '@CAP8_R890_C1': CAP8_R890_C1, '@CAP8_R891_C1': CAP8_R891_C1, '@CAP8_R892_C1': CAP8_R892_C1, '@CAP8_R893_C1': CAP8_R893_C1, '@CAP8_R894_C1': CAP8_R894_C1 })
