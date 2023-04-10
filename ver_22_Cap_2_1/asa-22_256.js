@@ -667,20 +667,29 @@ webform.validators.asa = function (v, allowOverpass) {
 
  // End  64-047
 
-//Start 
+//Start 64-048
     var sumR770 = Decimal(values.CAP7_R771_C1 || 0).plus(values.CAP7_R772_C1 || 0);
+    var sumR770C1 = Decimal(values.CAP7_R770_C1 || 0);
 
-    if (!(Decimal(values.CAP7_R770_C1 || 0) >= sumR770)) {
+
+    // Round the values to one sign after zero
+    sumR770 = sumR770.toDecimalPlaces(1);
+    sumR770C1 = sumR770C1.toDecimalPlaces(1);
+
+    if (sumR770C1.lessThan(sumR770)) {
+        var errorMsg = Drupal.t('Cod eroare: 64-048, Cap.7 r.770 c.1 >= r.771 c.1 + r.772 c.1   - [r.770 c.1] < [r.771 c.1] + [r.772 c.1]  = [sumR770]', {
+            '[sumR770]': sumR770.toFixed(1),
+            '[r.770 c.1]': sumR770C1.toFixed(1),
+            '[r.771 c.1]': Decimal(values.CAP7_R771_C1 || 0).toDecimalPlaces(1),
+            '[r.772 c.1]': Decimal(values.CAP7_R772_C1 || 0).toDecimalPlaces(1)
+          
+        });
         webform.errors.push({
             'fieldName': 'CAP7_R770_C1',
-            'msg': Drupal.t('Cod eroare: 64-048, Cap.7 [r.770 c.1] >= [r.771 c.1]+ [r.772 c.1]')
+            'msg': errorMsg
         });
-
-
-
     }
-
-
+ // End 64-048
 
 //-------------------------------------------------------------------
 
