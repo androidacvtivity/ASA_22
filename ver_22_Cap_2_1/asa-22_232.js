@@ -896,14 +896,37 @@ webform.validators.asa = function (v, allowOverpass) {
 //End 64-052
 
 
-    var sumR870 = Decimal(values.CAP8_R871_C1 || 0).plus(values.CAP8_R872_C1 || 0);
+    // var sumR870 = Decimal(values.CAP8_R871_C1 || 0).plus(values.CAP8_R872_C1 || 0);
 
-    if (!(Decimal(values.CAP8_R870_C1 || 0) >= sumR870)) {
+    // if (!(Decimal(values.CAP8_R870_C1 || 0) >= sumR870)) {
+    //     webform.errors.push({
+    //         'fieldName': 'CAP8_R870_C1',
+    //         'msg': Drupal.t('Cod eroare: 64-049, Cap.8 [r.870 c.1] >= [r.871 c.1]+ [r.872 c.1]')
+    //     });
+    // }
+
+
+//Start 64-049
+    var sumR870 = parseFloat(values.CAP8_R871_C1 || 0) + parseFloat(values.CAP8_R872_C1 || 0); 
+    var CAP8_R870_C1 = parseFloat(values.CAP8_R870_C1) || 0;
+    var CAP8_R871_C1 = parseFloat(values.CAP8_R871_C1) || 0;
+    var CAP8_R872_C1 = parseFloat(values.CAP8_R872_C1) || 0;
+   
+
+    if (CAP8_R870_C1 < sumR870) {
         webform.errors.push({
             'fieldName': 'CAP8_R870_C1',
-            'msg': Drupal.t('Cod eroare: 64-049, Cap.8 [r.870 c.1] >= [r.871 c.1]+ [r.872 c.1]')
+            'msg': Drupal.t('Cod eroare: 64-049, Cap.8 [r.870 c.1] >= [r.871 c.1] = @CAP8_R871_C1 + [r.872 c.1] = @CAP8_R872_C1,   @CAP8_R870_C1 <  Suma  [r.871 c.1], [r.872 c.1] -   @sumR870.', { '@sumR870': sumR870, '@CAP8_R870_C1': CAP8_R870_C1,  '@CAP8_R871_C1': CAP8_R871_C1, '@CAP8_R872_C1': CAP8_R872_C1})
         });
     }
+
+//End 64-049
+
+
+
+
+
+
 
 
 
@@ -925,7 +948,7 @@ webform.validators.asa = function (v, allowOverpass) {
 
     var sumR890 = parseFloat(values.CAP8_R891_C1 || 0) + parseFloat(values.CAP8_R892_C1 || 0) + parseFloat(values.CAP8_R893_C1 || 0) + parseFloat(values.CAP8_R894_C1 || 0);
     var CAP8_R890_C1 = parseFloat(values.CAP8_R890_C1) || 0;
-    var CAP8_R812_C1 = parseFloat(values.CAP8_R812_C1) || 0;
+    var CAP8_R891_C1 = parseFloat(values.CAP8_R891_C1) || 0;
     var CAP8_R892_C1 = parseFloat(values.CAP8_R892_C1) || 0;
     var CAP8_R893_C1 = parseFloat(values.CAP8_R893_C1) || 0;
     var CAP8_R894_C1 = parseFloat(values.CAP8_R894_C1) || 0;
@@ -933,7 +956,7 @@ webform.validators.asa = function (v, allowOverpass) {
     if (CAP8_R890_C1 < sumR890) {
         webform.errors.push({
             'fieldName': 'CAP8_R890_C1',
-            'msg': Drupal.t('Cod eroare: 64-051, Cap.8 [r.890 c.1] >= [r.891 c.1] = @CAP8_R812_C1 + [r.892 c.1] = @CAP8_R892_C1 + [r.893 c.1] = @CAP8_R893_C1 + [r.894 c.1] = @CAP8_R894_C1. @CAP8_R890_C1 <  Suma  [r.891 c.1], [r.892 c.1], [r.893 c.1], [r.894 c.1] -   @sumR890.', { '@sumR890': sumR890, '@CAP8_R890_C1': CAP8_R890_C1, '@CAP8_R812_C1': CAP8_R812_C1, '@CAP8_R892_C1': CAP8_R892_C1, '@CAP8_R893_C1': CAP8_R893_C1, '@CAP8_R894_C1': CAP8_R894_C1 })
+            'msg': Drupal.t('Cod eroare: 64-051, Cap.8 [r.890 c.1] >= [r.891 c.1] = @CAP8_R891_C1 + [r.892 c.1] = @CAP8_R892_C1 + [r.893 c.1] = @CAP8_R893_C1 + [r.894 c.1] = @CAP8_R894_C1. @CAP8_R890_C1 <  Suma  [r.891 c.1], [r.892 c.1], [r.893 c.1], [r.894 c.1] -   @sumR890.', { '@sumR890': sumR890, '@CAP8_R890_C1': CAP8_R890_C1, '@CAP8_R891_C1': CAP8_R891_C1, '@CAP8_R892_C1': CAP8_R892_C1, '@CAP8_R893_C1': CAP8_R893_C1, '@CAP8_R894_C1': CAP8_R894_C1 })
         });
     }
 
