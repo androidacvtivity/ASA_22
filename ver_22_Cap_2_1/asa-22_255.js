@@ -350,27 +350,7 @@ webform.validators.asa = function (v, allowOverpass) {
     // }
 
 
-    // Start 64-006
-    var sumR291 = Decimal(values.CAP2_R2911_C1 || 0).plus(values.CAP2_R2912_C1 || 0);
-    var cap2R291C1 = Decimal(values.CAP2_R291_C1 || 0);
 
-    // Round the values to one sign after zero
-    sumR291 = sumR291.toDecimalPlaces(1);
-    cap2R291C1 = cap2R291C1.toDecimalPlaces(1);
-
-    if (cap2R291C1.lessThan(sumR291)) {
-        var errorMsg = Drupal.t('Cod eroare: 64-006, r.291 c.1 >= r.2911c.1 + r.2912 c.1 - [r.291 c.1] < [r.2911c.1] + [r.2912 c.1] = [sumR291]', {
-            '[sumR291]': sumR291.toFixed(1),
-            '[r.291 c.1]': cap2R291C1.toFixed(1),
-            '[r.2911c.1]': Decimal(values.CAP2_R2911_C1 || 0).toDecimalPlaces(1),
-            '[r.2912 c.1]': Decimal(values.CAP2_R2912_C1 || 0).toDecimalPlaces(1)
-        });
-        webform.errors.push({
-            'fieldName': 'CAP2_R291_C1',
-            'msg': errorMsg
-        });
-    }
-// End 64-006
     // var sumR310 = Decimal(values.CAP2_R311_C1 || 0).plus(values.CAP2_R312_C1 || 0);
     // if (!(Decimal(values.CAP2_R310_C1 || 0) >= sumR310)) {
     //     webform.errors.push({
@@ -638,19 +618,54 @@ webform.validators.asa = function (v, allowOverpass) {
 
 
 
-   
+    // Start 64-006
+    var sumR291 = Decimal(values.CAP2_R2911_C1 || 0).plus(values.CAP2_R2912_C1 || 0);
+    var cap2R291C1 = Decimal(values.CAP2_R291_C1 || 0);
+
+    // Round the values to one sign after zero
+    sumR291 = sumR291.toDecimalPlaces(1);
+    cap2R291C1 = cap2R291C1.toDecimalPlaces(1);
+
+    if (cap2R291C1.lessThan(sumR291)) {
+        var errorMsg = Drupal.t('Cod eroare: 64-006, r.291 c.1 >= r.2911c.1 + r.2912 c.1 - [r.291 c.1] < [r.2911c.1] + [r.2912 c.1] = [sumR291]', {
+            '[sumR291]': sumR291.toFixed(1),
+            '[r.291 c.1]': cap2R291C1.toFixed(1),
+            '[r.2911c.1]': Decimal(values.CAP2_R2911_C1 || 0).toDecimalPlaces(1),
+            '[r.2912 c.1]': Decimal(values.CAP2_R2912_C1 || 0).toDecimalPlaces(1)
+        });
+        webform.errors.push({
+            'fieldName': 'CAP2_R291_C1',
+            'msg': errorMsg
+        });
+    }
+    // End 64-006
+
+
+      // Start 64-047
 
     var sumR730 = Decimal(values.CAP7_R731_C1 || 0).plus(values.CAP7_R732_C1 || 0).plus(values.CAP7_R733_C1 || 0);
+    var sumR730C1 = Decimal(values.CAP7_R730_C1 || 0);
 
-    if (!(Decimal(values.CAP7_R730_C1 || 0) >= sumR730)) {
+
+    // Round the values to one sign after zero
+    sumR730 = sumR730.toDecimalPlaces(1);
+    sumR730C1 = sumR730C1.toDecimalPlaces(1);
+
+    if (sumR730C1.lessThan(sumR730)) {
+        var errorMsg = Drupal.t('Cod eroare: 64-047, Cap.7 r.730 c.1 >= r.731 c.1 + r.732 c.1 + r.733 c.1   - [r.730 c.1] < [r.731 c.1] + [r.732 c.1] + [r.733 c.1] = [sumR730]', {
+            '[sumR730]': sumR730.toFixed(1),
+            '[r.730 c.1]': sumR730C1.toFixed(1),
+            '[r.731 c.1]': Decimal(values.CAP7_R731_C1 || 0).toDecimalPlaces(1),
+            '[r.732 c.1]': Decimal(values.CAP7_R732_C1 || 0).toDecimalPlaces(1),
+            '[r.733 c.1]': Decimal(values.CAP7_R733_C1 || 0).toDecimalPlaces(1)
+        });
         webform.errors.push({
             'fieldName': 'CAP7_R730_C1',
-            'msg': Drupal.t('Cod eroare: 64-047, Cap.7 [r.730 c.1] >= [r.731 c.1]+ [r.732 c.1] + [r.733 c.1]')
+            'msg': errorMsg
         });
     }
 
-
-
+ // Start 64-047
 
 
     var sumR770 = Decimal(values.CAP7_R771_C1 || 0).plus(values.CAP7_R772_C1 || 0);
