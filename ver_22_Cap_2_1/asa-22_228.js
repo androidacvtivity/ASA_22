@@ -908,21 +908,34 @@ webform.validators.asa = function (v, allowOverpass) {
 
 
 
-////I need the result of both variables to be rounded to one sign after zero in the calculation and then make the logical comparison
 
 
 
 
-    var sumR890 = Decimal(values.CAP8_R891_C1 || 0).plus(values.CAP8_R892_C1 || 0).plus(values.CAP8_R893_C1 || 0).plus(values.CAP8_R894_C1 || 0);
+    // var sumR890 = parseFloat(values.CAP8_R891_C1 || 0) + parseFloat(values.CAP8_R892_C1 || 0) + parseFloat(values.CAP8_R893_C1 || 0) + parseFloat(values.CAP8_R894_C1 || 0);
+    // var CAP8_R890_C1 = parseFloat(values.CAP8_R890_C1) || 0;
 
-    if (!(Decimal(values.CAP8_R890_C1 || 0) >= sumR890)) {
+    // if (CAP8_R890_C1 < sumR890) {
+    //     webform.errors.push({
+    //         'fieldName': 'CAP8_R890_C1',
+    //         'msg': Drupal.t('Cod eroare: 64-051, Cap.8 [r.890 c.1] >= [r.891 c.1] = [values.CAP8_R812_C1]   + [r.892 c.1] = [values.CAP8_R892_C1] + [r.893 c.1] = [values.CAP8_R893_C1] + [r.894 c.1] = [values.CAP8_R894_C1]. @CAP8_R890_C1 <  Sum of [r.891 c.1], [r.892 c.1], [r.893 c.1], [r.894 c.1] is @sumR890.', { '@sumR890': sumR890, '@CAP8_R890_C1': CAP8_R890_C1 })
+    //     });
+    // }
+
+
+    var sumR890 = parseFloat(values.CAP8_R891_C1 || 0) + parseFloat(values.CAP8_R892_C1 || 0) + parseFloat(values.CAP8_R893_C1 || 0) + parseFloat(values.CAP8_R894_C1 || 0);
+    var CAP8_R890_C1 = parseFloat(values.CAP8_R890_C1) || 0;
+    var CAP8_R812_C1 = parseFloat(values.CAP8_R812_C1) || 0;
+    var CAP8_R892_C1 = parseFloat(values.CAP8_R892_C1) || 0;
+    var CAP8_R893_C1 = parseFloat(values.CAP8_R893_C1) || 0;
+    var CAP8_R894_C1 = parseFloat(values.CAP8_R894_C1) || 0;
+
+    if (CAP8_R890_C1 < sumR890) {
         webform.errors.push({
             'fieldName': 'CAP8_R890_C1',
-            'msg': Drupal.t('Cod eroare: 64-051, Cap.8 [r.890 c.1] >= [r.891 c.1] + [r.892 c.1] + [r.893 c.1] + [r.894 c.1]')
+            'msg': Drupal.t('Cod eroare: 64-051, Cap.8 [r.890 c.1] >= [r.891 c.1] = @CAP8_R812_C1 + [r.892 c.1] = @CAP8_R892_C1 + [r.893 c.1] = @CAP8_R893_C1 + [r.894 c.1] = @CAP8_R894_C1. @CAP8_R890_C1 <  Suma  [r.891 c.1], [r.892 c.1], [r.893 c.1], [r.894 c.1] -   @sumR890.', { '@sumR890': sumR890, '@CAP8_R890_C1': CAP8_R890_C1, '@CAP8_R812_C1': CAP8_R812_C1, '@CAP8_R892_C1': CAP8_R892_C1, '@CAP8_R893_C1': CAP8_R893_C1, '@CAP8_R894_C1': CAP8_R894_C1 })
         });
     }
-
-
 
 
 
