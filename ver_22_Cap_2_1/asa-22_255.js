@@ -665,9 +665,9 @@ webform.validators.asa = function (v, allowOverpass) {
         });
     }
 
- // Start 64-047
+ // End  64-047
 
-
+//Start 
     var sumR770 = Decimal(values.CAP7_R771_C1 || 0).plus(values.CAP7_R772_C1 || 0);
 
     if (!(Decimal(values.CAP7_R770_C1 || 0) >= sumR770)) {
