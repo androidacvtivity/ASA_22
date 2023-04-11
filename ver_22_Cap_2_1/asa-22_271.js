@@ -832,17 +832,28 @@ webform.validators.asa = function (v, allowOverpass) {
     // }
 
 
-    var sumR890 = parseFloat((values.CAP8_R891_C1 || 0) + parseFloat(values.CAP8_R892_C1 || 0) + parseFloat(values.CAP8_R893_C1 || 0) + parseFloat(values.CAP8_R894_C1 || 0).toFixed(1));
-    var CAP8_R890_C1 = parseFloat((values.CAP8_R890_C1) || 0).toFixed(1);
-    var CAP8_R891_C1 = parseFloat(values.CAP8_R891_C1) || 0;
-    var CAP8_R892_C1 = parseFloat(values.CAP8_R892_C1) || 0;
-    var CAP8_R893_C1 = parseFloat(values.CAP8_R893_C1) || 0;
-    var CAP8_R894_C1 = parseFloat(values.CAP8_R894_C1) || 0;
+   
+
+    var sumR890 = Decimal(values.CAP8_R891_C1 || 0).plus(values.CAP8_R892_C1 || 0).plus(values.CAP8_R893_C1 || 0).plus(values.CAP8_R894_C1 || 0);
+
+    var CAP8_R890_C1 = Decimal(values.CAP8_R890_C1 || 0);
+    var CAP8_R891_C1 = Decimal(values.CAP8_R891_C1 || 0);
+    var CAP8_R892_C1 = Decimal(values.CAP8_R892_C1 || 0);
+    var CAP8_R893_C1 = Decimal(values.CAP8_R893_C1 || 0);
+    var CAP8_R894_C1 = Decimal(values.CAP8_R894_C1 || 0);
 
     
-    sumR890 = sumR890.toFixed(1);
+    // Round the values to one sign after zero
+    sumR890 = sumR890.toDecimalPlaces(1);
+    CAP8_R890_C1 = CAP8_R890_C1.toDecimalPlaces(1);
+    CAP8_R891_C1 = CAP8_R891_C1.toDecimalPlaces(1);
+    CAP8_R892_C1 = CAP8_R892_C1.toDecimalPlaces(1);
+    CAP8_R893_C1 = CAP8_R893_C1.toDecimalPlaces(1);
+    CAP8_R894_C1 = CAP8_R894_C1.toDecimalPlaces(1);
 
-    if (parseFloat(CAP8_R890_C1) < parseFloat(sumR890)) {
+ 
+
+    if (CAP8_R890_C1.lessThan(sumR890)) {
         webform.errors.push({
             'fieldName': 'CAP8_R890_C1',
             'msg': Drupal.t('Cod eroare: 64-051, Cap.8 [r.890 c.1] >= [r.891 c.1] = @CAP8_R891_C1 + [r.892 c.1] = @CAP8_R892_C1 + [r.893 c.1] = @CAP8_R893_C1 + [r.894 c.1] = @CAP8_R894_C1. @CAP8_R890_C1 <  Suma  [r.891 c.1], [r.892 c.1], [r.893 c.1], [r.894 c.1] -   @sumR890.', { '@sumR890': sumR890, '@CAP8_R890_C1': CAP8_R890_C1, '@CAP8_R891_C1': CAP8_R891_C1, '@CAP8_R892_C1': CAP8_R892_C1, '@CAP8_R893_C1': CAP8_R893_C1, '@CAP8_R894_C1': CAP8_R894_C1 })
