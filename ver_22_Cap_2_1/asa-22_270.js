@@ -885,7 +885,13 @@ webform.validators.asa = function (v, allowOverpass) {
         for (var i = 2100; i < 2131; i++) {
             {
                 if (fun_row_36_001((i))) {
-                                             
+                     
+                    
+                    var col1 = 0;
+                    var col2 = 0;
+                    var col3 = 0;
+                  
+
                     if (!isNaN(Number(values["CAP21_R" + i + "_3_C1"]))) {
                         var col3 = Number(values["CAP21_R" + i + "_3_C1"]);
                     }
@@ -946,6 +952,11 @@ webform.validators.asa = function (v, allowOverpass) {
             {
                 if (fun_row_36_002((i))) {
 
+                    var col1 = 0;
+                    var col2 = 0;
+                    var col3 = 0;
+                    var col4 = 0;
+
                     if (!isNaN(Number(values["CAP21_R" + i + "_3_C1"]))) {
                         var col3 = Number(values["CAP21_R" + i + "_3_C1"]);
                     }
@@ -966,7 +977,12 @@ webform.validators.asa = function (v, allowOverpass) {
 
                     var SUM_COL2_COL4 = (col2 + col3 + col4).toFixed(1)
 
-                    if (col1 < (SUM_COL2_COL4)) {
+               //     if (Number(col1.toFixed(1)) <  Number(SUM_COL2_COL4.toFixed(1)))
+                    
+                     if (col1 < (SUM_COL2_COL4)) 
+                    
+                    
+                    {
                         webform.errors.push({
                             'fieldName': 'CAP21_R' + i + '_1_C1',
                             'weight': 1,
