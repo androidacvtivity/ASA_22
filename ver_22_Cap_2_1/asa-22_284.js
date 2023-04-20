@@ -366,14 +366,12 @@ webform.validators.asa = function (v, allowOverpass) {
     sumR311_312 = sumR311_312.toDecimalPlaces(1);
     sumR310_037 = sumR310_037.toDecimalPlaces(1);
 
-
-
-    if (sumR310_037.lessThan(sumR311_312)) {
+    if (sumR310_037.compareTo(sumR311_312) < 0) {
         var errorMsg = Drupal.t('Cod eroare: 64-037, Cap.2 [r.310 c.1] >= [r.311 c.1] + [r.312 c.1] - [r.310 c.1] < [r.311 c.1] + [r.312 c.1] = [sumR311_312] ', {
-            '[sumR311_312]': sumR311_312.toFixed(1), 
-            '[r.310 c.1]': sumR310_037.toFixed(1), 
-            '[r.311 c.1]': Decimal(values.CAP2_R311_C1 || 0).toDecimalPlaces(1), 
-            '[r.312 c.1]': Decimal(values.CAP2_R312_C1 || 0).toDecimalPlaces(1), 
+            '[sumR311_312]': sumR311_312.toFixed(1),
+            '[r.310 c.1]': sumR310_037.toFixed(1),
+            '[r.311 c.1]': Decimal(values.CAP2_R311_C1 || 0).toDecimalPlaces(1),
+            '[r.312 c.1]': Decimal(values.CAP2_R312_C1 || 0).toDecimalPlaces(1),
             '[sumR311_312]': sumR311_312.toFixed(1)
         });
         webform.errors.push({
