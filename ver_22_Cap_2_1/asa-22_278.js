@@ -409,6 +409,9 @@ webform.validators.asa = function (v, allowOverpass) {
 
     //sumR730C1.lessThan(sumR730
 
+    sumR320 = sumR320.toDecimalPlaces(1);
+    cap3R320C1 = cap3R320C1.toDecimalPlaces(1);
+
     if (cap3R320C1.lessThan(sumR320)) {
         webform.errors.push({
             'fieldName': 'CAP3_R320_C1',

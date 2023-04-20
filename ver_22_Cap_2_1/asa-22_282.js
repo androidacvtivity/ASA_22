@@ -368,7 +368,7 @@ webform.validators.asa = function (v, allowOverpass) {
 
 
 
-    if (sumR310_037.toNumber().toFixed(1) < sumR311_312.toNumber().toFixed(1)) {
+    if (sumR310_037.lessThan(sumR311_312)) {
         var errorMsg = Drupal.t('Cod eroare: 64-037, Cap.2 [r.310 c.1] >= [r.311 c.1] + [r.312 c.1] - [r.310 c.1] < [r.311 c.1] + [r.312 c.1] = [sumR311_312] ', {
             '[sumR311_312]': sumR311_312.toFixed(1), 
             '[r.310 c.1]': sumR310_037.toFixed(1), 
@@ -409,7 +409,15 @@ webform.validators.asa = function (v, allowOverpass) {
 
     //sumR730C1.lessThan(sumR730
 
-    if (cap3R320C1.lessThan(sumR320)) {
+    sumR320 = sumR320.toDecimalPlaces(1);
+    cap3R320C1 = cap3R320C1.toDecimalPlaces(1);
+
+
+
+      if (cap3R320C1.lessThan(sumR320)) 
+    
+  //  if (cap3R320C1.toNumber().toFixed(1) < sumR320.toNumber().toFixed(1))
+    {
         webform.errors.push({
             'fieldName': 'CAP3_R320_C1',
             'msg': Drupal.t('Cod eroare: 64-038, Cap.3 [r.320 c.1 = @cap3R320C1] < [r.330 c.1 = @cap3R330C1] + [r.340 c.1 = @cap3R340C1] + [r.350 c.1 = @cap3R350C1],  [@sumR320]', { '@sumR320': sumR320.toFixed(1), '@cap3R320C1': cap3R320C1.toFixed(1), '@cap3R330C1': cap3R330C1.toFixed(1), '@cap3R340C1': cap3R340C1.toFixed(1), '@cap3R350C1': cap3R350C1.toFixed(1) })
