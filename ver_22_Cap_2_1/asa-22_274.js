@@ -359,16 +359,15 @@ webform.validators.asa = function (v, allowOverpass) {
     //     });
     // }
 //Start 64-037
+//In this case  In this case not work correctly.  Why ?
+// CAP2_R310_C1 = 1314.5
+// CAP2_R312_C1 = 552.0
     var sumR311_312 = Decimal(values.CAP2_R311_C1 || 0).plus(values.CAP2_R312_C1 || 0);
     var sumR310_037 = Decimal(values.CAP2_R310_C1 || 0);
-
-    // Round the values to one sign after zero
+  // Round the values to one sign after zero
     sumR311_312 = sumR311_312.toDecimalPlaces(1);
     sumR310_037 = sumR310_037.toDecimalPlaces(1);
-
-
-
-    if (sumR310_037.toNumber().toFixed(1) < sumR311_312.toNumber().toFixed(1)) {
+  if (sumR310_037.toNumber().toFixed(1) < sumR311_312.toNumber().toFixed(1)) {
         var errorMsg = Drupal.t('Cod eroare: 64-037, Cap.2 [r.310 c.1] >= [r.311 c.1] + [r.312 c.1] - [r.310 c.1] < [r.311 c.1] + [r.312 c.1] = [sumR311_312] ', {
             '[sumR311_312]': sumR311_312.toFixed(1), 
             '[r.310 c.1]': sumR310_037.toFixed(1), 
@@ -381,9 +380,13 @@ webform.validators.asa = function (v, allowOverpass) {
             'msg': errorMsg
         });
     }
-
-
 //End 64-037
+
+//But in this case  work correctly
+
+
+
+
 
     //  var sumR320 = Decimal(values.CAP3_R330_C1 || 0).plus(values.CAP3_R340_C1 || 0).plus(values.CAP3_R350_C1 || 0);
 
