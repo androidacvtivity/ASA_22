@@ -407,7 +407,9 @@ webform.validators.asa = function (v, allowOverpass) {
     
     var sumR320 = cap3R330C1.plus(cap3R340C1).plus(cap3R350C1);
 
-    if ((cap3R320C1.toFixed(1) < sumR320.toFixed(1))) {
+    //sumR730C1.lessThan(sumR730
+
+    if (cap3R320C1.lessThan(sumR320)) {
         webform.errors.push({
             'fieldName': 'CAP3_R320_C1',
             'msg': Drupal.t('Cod eroare: 64-038, Cap.3 [r.320 c.1 = @cap3R320C1] < [r.330 c.1 = @cap3R330C1] + [r.340 c.1 = @cap3R340C1] + [r.350 c.1 = @cap3R350C1],  [@sumR320]', { '@sumR320': sumR320.toFixed(1), '@cap3R320C1': cap3R320C1.toFixed(1), '@cap3R330C1': cap3R330C1.toFixed(1), '@cap3R340C1': cap3R340C1.toFixed(1), '@cap3R350C1': cap3R350C1.toFixed(1) })
@@ -821,44 +823,6 @@ webform.validators.asa = function (v, allowOverpass) {
 
 //End 64-049
 
-    // var sumR890 = parseFloat(values.CAP8_R891_C1 || 0) + parseFloat(values.CAP8_R892_C1 || 0) + parseFloat(values.CAP8_R893_C1 || 0) + parseFloat(values.CAP8_R894_C1 || 0);
-    // var CAP8_R890_C1 = parseFloat(values.CAP8_R890_C1) || 0;
-
-    // if (CAP8_R890_C1 < sumR890) {
-    //     webform.errors.push({
-    //         'fieldName': 'CAP8_R890_C1',
-    //         'msg': Drupal.t('Cod eroare: 64-051, Cap.8 [r.890 c.1] >= [r.891 c.1] = [values.CAP8_R812_C1]   + [r.892 c.1] = [values.CAP8_R892_C1] + [r.893 c.1] = [values.CAP8_R893_C1] + [r.894 c.1] = [values.CAP8_R894_C1]. @CAP8_R890_C1 <  Sum of [r.891 c.1], [r.892 c.1], [r.893 c.1], [r.894 c.1] is @sumR890.', { '@sumR890': sumR890, '@CAP8_R890_C1': CAP8_R890_C1 })
-    //     });
-    // }
-
-
-   
-
-    var sumR890 = Decimal(values.CAP8_R891_C1 || 0).plus(values.CAP8_R892_C1 || 0).plus(values.CAP8_R893_C1 || 0).plus(values.CAP8_R894_C1 || 0);
-
-    var CAP8_R890_C1 = Decimal(values.CAP8_R890_C1 || 0);
-    var CAP8_R891_C1 = Decimal(values.CAP8_R891_C1 || 0);
-    var CAP8_R892_C1 = Decimal(values.CAP8_R892_C1 || 0);
-    var CAP8_R893_C1 = Decimal(values.CAP8_R893_C1 || 0);
-    var CAP8_R894_C1 = Decimal(values.CAP8_R894_C1 || 0);
-
-    
-    // Round the values to one sign after zero
-    sumR890 = sumR890.toDecimalPlaces(1);
-    CAP8_R890_C1 = CAP8_R890_C1.toDecimalPlaces(1);
-    CAP8_R891_C1 = CAP8_R891_C1.toDecimalPlaces(1);
-    CAP8_R892_C1 = CAP8_R892_C1.toDecimalPlaces(1);
-    CAP8_R893_C1 = CAP8_R893_C1.toDecimalPlaces(1);
-    CAP8_R894_C1 = CAP8_R894_C1.toDecimalPlaces(1);
-
- 
-
-    if (CAP8_R890_C1.lessThan(sumR890)) {
-        webform.errors.push({
-            'fieldName': 'CAP8_R890_C1',
-            'msg': Drupal.t('Cod eroare: 64-051, Cap.8 [r.890 c.1] >= [r.891 c.1] = @CAP8_R891_C1 + [r.892 c.1] = @CAP8_R892_C1 + [r.893 c.1] = @CAP8_R893_C1 + [r.894 c.1] = @CAP8_R894_C1. @CAP8_R890_C1 <  Suma  [r.891 c.1], [r.892 c.1], [r.893 c.1], [r.894 c.1] -   @sumR890.', { '@sumR890': sumR890, '@CAP8_R890_C1': CAP8_R890_C1, '@CAP8_R891_C1': CAP8_R891_C1, '@CAP8_R892_C1': CAP8_R892_C1, '@CAP8_R893_C1': CAP8_R893_C1, '@CAP8_R894_C1': CAP8_R894_C1 })
-        });
-    }
 
 
 
@@ -988,7 +952,7 @@ webform.validators.asa = function (v, allowOverpass) {
 
                     var SUM_COL2_COL4 = (col2 + col3 + col4).toFixed(1)
 
-               //     if (Number(col1.toFixed(1)) <  Number(SUM_COL2_COL4.toFixed(1)))
+              
                     
                      if (col1 < (SUM_COL2_COL4)) 
                     
@@ -1015,10 +979,7 @@ webform.validators.asa = function (v, allowOverpass) {
      //End 64-102
 
 
-//Show values col1 and sumCol1 in   'msg': Drupal.t('Cod eroare: 64-101  CAP 2.1 rd. 2100 col.1 ≠ (rd. 2101+…+rd.2130) col.1')
 
-//I need the result of both variables to be rounded to one sign after zero in the calculation and then make the logical comparison
-// because now it shows an error -- Capitol 2.1 Rînd. 2100 col.1 - Cod eroare: 64-101 CAP 2.1 rd. 2100 col.1 ≠ (rd. 2101+…+rd.2130) col.1. col1 = 10401.8, sumCol1 = 10401.800000000001
 
     // Start 64-101
     var sumCol1 = 0;
@@ -1044,10 +1005,6 @@ webform.validators.asa = function (v, allowOverpass) {
 
 
   // Start 64 - 103
-    // if (!isNaN(Number(values["CAP21_R" + i + "-3_C1"]))) {
-    //     var col3 = Number(values["CAP21_R" + i + "-3_C1"]);
-    // }
-
     if (!isNaN(Number(values["CAP2_R220_C1"]))) {
         var col2 = Number(values["CAP2_R220_C1"]);
     }
@@ -1077,29 +1034,14 @@ webform.validators.asa = function (v, allowOverpass) {
 
     }
 
+//End 64 - 103
 
 
-
-
-
-
-
-
-
-  
-
-    // Start 64 - 104
-    // if (!isNaN(Number(values["CAP21_R" + i + "-3_C1"]))) {
-    //     var col3 = Number(values["CAP21_R" + i + "-3_C1"]);
-    // }
+ // Start 64 - 104
 
     if (!isNaN(Number(values["CAP2_R291_C1"]))) {
         var col2 = Number(values["CAP2_R2931_C1"]);
     }
-
-    // if (!isNaN(Number(values["CAP2_R240_C1"]))) {
-    //     var col4 = Number(values["CAP2_R240_C1"]);
-    // }
 
 
 
@@ -1122,6 +1064,34 @@ webform.validators.asa = function (v, allowOverpass) {
 
 
 
+    //Start  64-051
+    var sumR890 = Decimal(values.CAP8_R891_C1 || 0).plus(values.CAP8_R892_C1 || 0).plus(values.CAP8_R893_C1 || 0).plus(values.CAP8_R894_C1 || 0);
+    var CAP8_R890_C1 = Decimal(values.CAP8_R890_C1 || 0);
+    var CAP8_R891_C1 = Decimal(values.CAP8_R891_C1 || 0);
+    var CAP8_R892_C1 = Decimal(values.CAP8_R892_C1 || 0);
+    var CAP8_R893_C1 = Decimal(values.CAP8_R893_C1 || 0);
+    var CAP8_R894_C1 = Decimal(values.CAP8_R894_C1 || 0);
+
+
+    // Round the values to one sign after zero
+    sumR890 = sumR890.toDecimalPlaces(1);
+    CAP8_R890_C1 = CAP8_R890_C1.toDecimalPlaces(1);
+    CAP8_R891_C1 = CAP8_R891_C1.toDecimalPlaces(1);
+    CAP8_R892_C1 = CAP8_R892_C1.toDecimalPlaces(1);
+    CAP8_R893_C1 = CAP8_R893_C1.toDecimalPlaces(1);
+    CAP8_R894_C1 = CAP8_R894_C1.toDecimalPlaces(1);
+
+
+
+    if (CAP8_R890_C1.lessThan(sumR890)) {
+        webform.errors.push({
+            'fieldName': 'CAP8_R890_C1',
+            'msg': Drupal.t('Cod eroare: 64-051, Cap.8 [r.890 c.1] >= [r.891 c.1] = @CAP8_R891_C1 + [r.892 c.1] = @CAP8_R892_C1 + [r.893 c.1] = @CAP8_R893_C1 + [r.894 c.1] = @CAP8_R894_C1. @CAP8_R890_C1 <  Suma  [r.891 c.1], [r.892 c.1], [r.893 c.1], [r.894 c.1] -   @sumR890.', { '@sumR890': sumR890, '@CAP8_R890_C1': CAP8_R890_C1, '@CAP8_R891_C1': CAP8_R891_C1, '@CAP8_R892_C1': CAP8_R892_C1, '@CAP8_R893_C1': CAP8_R893_C1, '@CAP8_R894_C1': CAP8_R894_C1 })
+        });
+    }
+//End  64-051
+
+
 
     // Start 64 - 105
     
@@ -1134,10 +1104,11 @@ webform.validators.asa = function (v, allowOverpass) {
 
     // Check if CAP2_R296_C1 is less than the total value
     function check64_105(values, webform) {
-        var total64_105 = calculateTotal64_105(values);
+        var total64_105 = calculateTotal64_105(values).toDecimalPlaces(1);
+        var CAP2_R296_C1 = Decimal(values.CAP2_R296_C1 || 0);
+        CAP2_R296_C1 = CAP2_R296_C1.toDecimalPlaces(1);
 
-
-        if (Decimal(values.CAP2_R296_C1 || 0).lessThan(total64_105)) {
+        if (CAP2_R296_C1.lessThan(total64_105)) {
             webform.errors.push({
                 'fieldName': 'CAP2_R296_C1',
                 'msg': Drupal.t('Cod eroare: 64-105  CAP.2 [r.296 c.1] >= [r.2961c.1] + [r.2962 c.1] -  @CAP2_R296_C1 <   @total64_105', { "@CAP2_R296_C1": values.CAP2_R296_C1, "@total64_105": total64_105.toFixed() })
@@ -1183,10 +1154,13 @@ webform.validators.asa = function (v, allowOverpass) {
 
         // Check if CAP2_R220_C1 is less than the total value of CAP2_R241_C1 through CAP2_R243_C1
         function checkCap2R220C1(values, webform) {
-            var totalCap2R221ToR222C1 = calculateTotalCap2R221ToR222C1(values);
+            var totalCap2R221ToR222C1 = calculateTotalCap2R221ToR222C1(values).toDecimalPlaces(1);
+
+            var CAP2_R220_C1 = Decimal(values.CAP2_R220_C1 || 0).toDecimalPlaces(1);
+            CAP2_R220_C1 = CAP2_R220_C1.toDecimalPlaces(1);
 
 
-            if (Decimal(values.CAP2_R220_C1 || 0).lessThan(totalCap2R221ToR222C1)) {
+            if (CAP2_R220_C1.lessThan(totalCap2R221ToR222C1)) {
                 webform.errors.push({
                     'fieldName': 'CAP2_R220_C1',
                     'msg': Drupal.t('Cod eroare: 64-033, [r.220 c.1] >= [r.221c.1] + [r.222 c.1] -  @CAP2_R220_C1 <   @totalCap2R221ToR222C1', { "@CAP2_R220_C1": values.CAP2_R220_C1, "@totalCap2R221ToR222C1": totalCap2R221ToR222C1.toFixed() })
@@ -1214,10 +1188,12 @@ webform.validators.asa = function (v, allowOverpass) {
 
     // Check if CAP2_R240_C1 is less than the total value of CAP2_R241_C1 through CAP2_R243_C1
     function checkCap2R240C1(values, webform) {
-        var totalCap2R241ToR243C1 = calculateTotalCap2R241ToR243C1(values);
+        var totalCap2R241ToR243C1 = calculateTotalCap2R241ToR243C1(values).toDecimalPlaces(1);
 
+        var CAP2_R240_C1 = Decimal(values.CAP2_R240_C1 || 0).toDecimalPlaces(1);
+        CAP2_R240_C1 = CAP2_R240_C1.toDecimalPlaces(1);
        
-        if (Decimal(values.CAP2_R240_C1 || 0).lessThan(totalCap2R241ToR243C1)) {
+        if (CAP2_R240_C1.lessThan(totalCap2R241ToR243C1)) {
             webform.errors.push({
                 'fieldName': 'CAP2_R240_C1',
                 'msg': Drupal.t('Cod eroare: 64-034, [r.240 c.1] >= [r.241c.1] + [r.242 c.1] + [r.243 c.1] -  @CAP2_R240_C1 <   @totalCap2R241ToR243C1', { "@CAP2_R240_C1": values.CAP2_R240_C1, "@totalCap2R241ToR243C1": totalCap2R241ToR243C1.toFixed() })
